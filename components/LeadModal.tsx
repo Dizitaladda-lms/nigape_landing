@@ -12,6 +12,7 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
   const [utmParams, setUtmParams] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -34,11 +35,13 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
     }));
     if (e.target.name === 'phone') {
       setPhoneError('');
+      setSubmitError('');
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
     const cleanPhone = formData.phone.replace(/\D/g, '');
     if (cleanPhone.length < 10) {
       setPhoneError('Please enter a valid 10-digit mobile number');
@@ -46,9 +49,20 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
     }
 
     setIsSubmitting(true);
+
+    let deviceId = '';
+    try {
+      deviceId = localStorage.getItem('nigape_device_id') || '';
+      if (!deviceId) {
+        deviceId = 'dev_' + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem('nigape_device_id', deviceId);
+      }
+    } catch (e) {}
+
     const leadPayload = {
       ...formData,
       phone: cleanPhone,
+      deviceId,
       goal: defaultGoal,
       timestamp: new Date().toISOString(),
       source: 'Popup Lead Modal',
@@ -56,13 +70,20 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
       ...utmParams,
     };
 
-    // Forward to CRM via Next.js route
+    // Forward to CRM via Next.js route with rate-limit check
     try {
-      await fetch('/api/lead', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(leadPayload),
       });
+
+      if (res.status === 429) {
+        const errJson = await res.json();
+        setSubmitError(errJson.error || 'Aap 1 minute mein bas 2 baar submit kar sakte hain. Kripya thoda wait karein.');
+        setIsSubmitting(false);
+        return;
+      }
     } catch (apiErr) {
       console.error('Failed to sync with CRM:', apiErr);
     }
@@ -175,6 +196,12 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
                 <span>Submit &amp; Download Syllabus →</span>
               )}
             </button>
+
+            {submitError && (
+              <div className="p-3 rounded-xl bg-red-950/70 border border-red-500/50 text-red-300 text-xs font-semibold text-center leading-relaxed animate-fadeIn">
+                {submitError}
+              </div>
+            )}
 
             <div className="text-center text-[11px] text-gray-400 pt-1">
               <span>We respect your privacy. No unwanted spam calls.</span>

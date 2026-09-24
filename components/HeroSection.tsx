@@ -12,6 +12,7 @@ export default function HeroSection({ onSubmitSuccess }) {
   const [utmParams, setUtmParams] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   // Extract UTMs on mount
   useEffect(() => {
@@ -35,11 +36,13 @@ export default function HeroSection({ onSubmitSuccess }) {
     }));
     if (e.target.name === 'phone') {
       setPhoneError('');
+      setSubmitError('');
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
     
     // Simple phone validation (10 digits Indian number)
     const cleanPhone = formData.phone.replace(/\D/g, '');
@@ -50,22 +53,39 @@ export default function HeroSection({ onSubmitSuccess }) {
 
     setIsSubmitting(true);
 
+    let deviceId = '';
+    try {
+      deviceId = localStorage.getItem('nigape_device_id') || '';
+      if (!deviceId) {
+        deviceId = 'dev_' + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem('nigape_device_id', deviceId);
+      }
+    } catch (e) {}
+
     const leadPayload = {
       ...formData,
       phone: cleanPhone,
+      deviceId,
       timestamp: new Date().toISOString(),
       source: 'Hero Above-The-Fold Form',
       landing_page_url: typeof window !== 'undefined' ? window.location.href : 'https://nigape.com',
       ...utmParams,
     };
 
-    // Forward to CRM
+    // Forward to CRM with Rate Limit handling
     try {
-      await fetch('/api/lead', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(leadPayload),
       });
+
+      if (res.status === 429) {
+        const errJson = await res.json();
+        setSubmitError(errJson.error || 'Aap 1 minute mein bas 2 baar lead submit kar sakte hain. Kripya thoda wait karein.');
+        setIsSubmitting(false);
+        return;
+      }
     } catch (apiErr) {
       console.error('Failed to sync with CRM:', apiErr);
     }
@@ -312,6 +332,12 @@ export default function HeroSection({ onSubmitSuccess }) {
                       <span>Get Syllabus &amp; Counseling Session →</span>
                     )}
                   </button>
+
+                  {submitError && (
+                    <div className="p-3 mt-2 rounded-xl bg-red-950/70 border border-red-500/50 text-red-300 text-xs font-semibold text-center leading-relaxed animate-fadeIn">
+                      {submitError}
+                    </div>
+                  )}
 
                   {/* Trust Microcopy */}
                   <div className="flex items-center justify-center gap-2 pt-2 text-[11px] text-gray-400">

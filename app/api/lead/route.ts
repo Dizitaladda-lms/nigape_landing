@@ -6,7 +6,43 @@ const DIZITALADDA_CRM_ENDPOINT = process.env.DIZITALADDA_CRM_ENDPOINT || 'https:
 const CRM_DOMAIN = process.env.CRM_DOMAIN || 'Nigape';
 const CRM_COURSE = process.env.CRM_COURSE || 'Generative AI & Autonomous AI Agents';
 
-export async function POST(request) {
+// Rate Limiter: Max 2 leads per 1 minute (60 seconds) from the same device / client
+const rateLimitMap = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 60 seconds
+const MAX_REQUESTS_PER_MINUTE = 2; // Max 2 leads per minute
+
+function checkRateLimit(key: string): { limited: boolean; retryAfter: number } {
+  const now = Date.now();
+  const history = (rateLimitMap.get(key) || []).filter(
+    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS
+  );
+
+  if (history.length >= MAX_REQUESTS_PER_MINUTE) {
+    const oldestTimestamp = history[0];
+    const retryAfter = Math.max(1, Math.ceil((oldestTimestamp + RATE_LIMIT_WINDOW_MS - now) / 1000));
+    rateLimitMap.set(key, history);
+    return { limited: true, retryAfter };
+  }
+
+  history.push(now);
+  rateLimitMap.set(key, history);
+
+  // Periodically cleanup expired entries if map gets too large
+  if (rateLimitMap.size > 2000) {
+    rateLimitMap.forEach((timestamps, k) => {
+      const active = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+      if (active.length === 0) {
+        rateLimitMap.delete(k);
+      } else {
+        rateLimitMap.set(k, active);
+      }
+    });
+  }
+
+  return { limited: false, retryAfter: 0 };
+}
+
+export async function POST(request: Request) {
   try {
     const data = await request.json();
     const {
@@ -17,6 +53,7 @@ export async function POST(request) {
       learningMode,
       goal,
       source,
+      deviceId,
       utm_source,
       utm_medium,
       utm_campaign,
@@ -33,7 +70,38 @@ export async function POST(request) {
       );
     }
 
-    const cleanPhone = String(phone).replace(/\\D/g, '').slice(-10);
+    const cleanPhone = String(phone).replace(/\D/g, '').slice(-10);
+    if (cleanPhone.length < 10) {
+      return NextResponse.json(
+        { error: 'Invalid 10-digit mobile number' },
+        { status: 400 }
+      );
+    }
+
+    // Identify client device by IP and optional deviceId
+    const forwarded = request.headers.get('x-forwarded-for');
+    const clientIp = forwarded ? forwarded.split(',')[0].trim() : (request.headers.get('x-real-ip') || '127.0.0.1');
+    const deviceKey = deviceId ? `${clientIp}_${deviceId}` : clientIp;
+
+    // Check rate limit by device/IP and by phone number (Max 2 requests per 60s)
+    const deviceCheck = checkRateLimit(deviceKey);
+    const phoneCheck = checkRateLimit(`phone_${cleanPhone}`);
+
+    if (deviceCheck.limited || phoneCheck.limited) {
+      const waitSeconds = Math.max(deviceCheck.retryAfter, phoneCheck.retryAfter);
+      return NextResponse.json(
+        {
+          error: `Rate limit: 1 minute ke andar same device se bas 2 leads submit ho sakti hain. Kripya ${waitSeconds} seconds baad try karein.`,
+          retryAfter: waitSeconds,
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(waitSeconds),
+          },
+        }
+      );
+    }
 
     // Map source strictly to accepted CRM enums ('META', 'GOOGLE', 'LANDING_PAGE', 'WEBSITE')
     let crmSource = 'LANDING_PAGE';
@@ -86,7 +154,7 @@ export async function POST(request) {
       crmStatus = crmRes.status;
       crmResponseData = await crmRes.json().catch(() => null);
       console.log('[CRM RESPONSE]:', crmStatus, crmResponseData);
-    } catch (crmErr) {
+    } catch (crmErr: any) {
       console.error('[CRM FORWARDING ERROR]:', crmErr.message || crmErr);
     }
 
@@ -103,7 +171,7 @@ export async function POST(request) {
         timestamp: timestamp || new Date().toISOString(),
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.error('Nigape lead processing error:', err);
     return NextResponse.json(
       { error: 'Internal Server Error', message: err.message },

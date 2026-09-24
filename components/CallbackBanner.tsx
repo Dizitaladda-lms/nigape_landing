@@ -16,9 +16,19 @@ export default function CallbackBanner({ onSubmitSuccess }) {
     }
 
     setIsSubmitting(true);
+    let deviceId = '';
+    try {
+      deviceId = localStorage.getItem('nigape_device_id') || '';
+      if (!deviceId) {
+        deviceId = 'dev_' + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem('nigape_device_id', deviceId);
+      }
+    } catch (e) {}
+
     const leadPayload = {
       fullName: 'Quick Callback Request',
       phone: cleanPhone,
+      deviceId,
       email: 'callback@lead.nigape.com',
       experience: 'Quick Callback',
       learningMode: 'Flexible',
@@ -27,13 +37,20 @@ export default function CallbackBanner({ onSubmitSuccess }) {
       landing_page_url: typeof window !== 'undefined' ? window.location.href : 'https://nigape.com',
     };
 
-    // Forward to CRM
+    // Forward to CRM with rate-limit check
     try {
-      await fetch('/api/lead', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(leadPayload),
       });
+
+      if (res.status === 429) {
+        const errJson = await res.json();
+        setError(errJson.error || 'Aap 1 minute mein bas 2 baar submit kar sakte hain. Kripya thoda wait karein.');
+        setIsSubmitting(false);
+        return;
+      }
     } catch (apiErr) {
       console.error('Failed to sync with CRM:', apiErr);
     }
