@@ -127,10 +127,9 @@ export default function CurriculumSection({ onOpenModal }) {
           <div className="mt-5 flex justify-center">
             <button
               onClick={onOpenModal}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/10 hover:bg-[#FF40EB] hover:text-white border border-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md group cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-white/10 hover:bg-[#FF40EB] hover:text-white border border-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer"
             >
-              <span>📄 Download Detailed 16-Week Brochure (PDF)</span>
-              <span className="transition-transform group-hover:translate-y-0.5">↓</span>
+              <span>Download Detailed 16-Week Brochure (PDF)</span>
             </button>
           </div>
         </div>
@@ -251,15 +250,15 @@ export default function CurriculumSection({ onOpenModal }) {
                 <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                   <button
                     onClick={onOpenModal}
-                    className="w-full sm:w-auto px-5 py-2.5 rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/10 hover:bg-[#FF40EB]/20 text-[#FF40EB] hover:text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full sm:w-auto px-5 py-2.5 rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/10 hover:bg-[#FF40EB]/20 text-[#FF40EB] hover:text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center cursor-pointer"
                   >
-                    <span>📥 Download Brochure PDF</span>
+                    <span>Download Brochure PDF</span>
                   </button>
                   <button
                     onClick={onOpenModal}
                     className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white text-black hover:bg-[#FF40EB] hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer"
                   >
-                    Enroll In This Cohort →
+                    Enroll In This Cohort
                   </button>
                 </div>
               </div>

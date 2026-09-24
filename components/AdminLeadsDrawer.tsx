@@ -74,9 +74,9 @@ export default function AdminLeadsDrawer({ isOpen, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 flex items-center justify-center text-sm font-bold"
+              className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center text-xs font-bold"
             >
-              ✕
+              Close
             </button>
           </div>
 

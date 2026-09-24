@@ -57,7 +57,7 @@ export default function TestimonialsSection({ onOpenModal }) {
                 {/* Rating & Hike Badge */}
                 <div className="flex items-center justify-between gap-2 mb-3.5 sm:mb-4">
                   <span className="text-xs sm:text-sm font-bold text-amber-400 tracking-wider">
-                    ★ ★ ★ ★ ★
+                    5.0 / 5.0 Rating
                   </span>
                   <span className="text-[10px] sm:text-[11px] font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30 shrink-0">
                     {t.hike}

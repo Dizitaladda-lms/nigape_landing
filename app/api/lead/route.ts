@@ -64,7 +64,7 @@ export async function POST(request) {
       remarks: `Profile: ${experience || 'N/A'} | Goal: ${goal || 'Counseling'} | Form: ${source || 'Lead Page'}`,
     };
 
-    console.log('🚀 [NIGAPE -> CRM FORWARDING]:', crmPayload);
+    console.log('[NIGAPE -> CRM FORWARDING]:', crmPayload);
 
     let crmResponseData = null;
     let crmStatus = null;
@@ -85,9 +85,9 @@ export async function POST(request) {
       clearTimeout(timeoutId);
       crmStatus = crmRes.status;
       crmResponseData = await crmRes.json().catch(() => null);
-      console.log('✅ [CRM RESPONSE]:', crmStatus, crmResponseData);
+      console.log('[CRM RESPONSE]:', crmStatus, crmResponseData);
     } catch (crmErr) {
-      console.error('⚠️ [CRM FORWARDING ERROR]:', crmErr.message || crmErr);
+      console.error('[CRM FORWARDING ERROR]:', crmErr.message || crmErr);
     }
 
     return NextResponse.json({

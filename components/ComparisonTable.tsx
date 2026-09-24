@@ -78,15 +78,12 @@ export default function ComparisonTable({ onOpenModal }) {
                     {f.name}
                   </td>
                   <td className="py-4 px-6 text-sm font-bold text-white bg-[#FF40EB]/5 border-x border-[#FF40EB]/20 text-center">
-                    <span className="text-emerald-400 font-bold mr-1.5">✓</span>
-                    <span>{f.nigape}</span>
+                    <span className="text-emerald-400 font-semibold">{f.nigape}</span>
                   </td>
                   <td className="py-4 px-6 text-xs text-gray-400 text-center">
-                    <span className="text-red-400 font-bold mr-1">✕</span>
                     <span>{f.recorded}</span>
                   </td>
                   <td className="py-4 px-6 text-xs text-gray-400 text-center">
-                    <span className="text-red-400 font-bold mr-1">✕</span>
                     <span>{f.degree}</span>
                   </td>
                 </tr>

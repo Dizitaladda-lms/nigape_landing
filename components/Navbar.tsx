@@ -76,7 +76,7 @@ export default function Navbar({ onOpenModal }) {
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (
-              <span className="text-xl font-bold text-[#FF40EB] leading-none">✕</span>
+              <span className="text-xs font-bold text-[#FF40EB]">Close</span>
             ) : (
               <>
                 <span className="w-5 h-0.5 bg-white block rounded"></span>

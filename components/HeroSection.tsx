@@ -168,17 +168,16 @@ export default function HeroSection({ onSubmitSuccess }) {
 
               <a
                 href="#lead-form"
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#FF40EB] via-[#d922c5] to-[#9234eb] text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,64,235,0.6)] animate-shimmer active:scale-95 transition"
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#FF40EB] via-[#d922c5] to-[#9234eb] text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center shadow-[0_0_25px_rgba(255,64,235,0.6)] animate-shimmer active:scale-95 transition"
               >
                 <span>Fill Quick Application Form</span>
-                <span className="text-sm font-black animate-bounce">↓</span>
               </a>
             </div>
 
             {/* Trust Social Proof Row */}
             <div className="pt-2 flex flex-wrap items-center gap-6 text-sm text-gray-300 border-t border-white/10">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-white">★ 4.9 / 5</span>
+                <span className="font-bold text-white">4.9 / 5 Rating</span>
                 <span className="text-xs text-gray-400">(500+ Alumni)</span>
               </div>
 
@@ -209,7 +208,7 @@ export default function HeroSection({ onSubmitSuccess }) {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF40EB]"></span>
                 </span>
                 <span className="text-[11px] font-black uppercase tracking-wider text-white">
-                  ⚡ Live Admissions Open • Batch Filling Fast
+                  Live Admissions Open • Batch Filling Fast
                 </span>
               </div>
             </div>

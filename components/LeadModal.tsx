@@ -90,10 +90,10 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition flex items-center justify-center text-sm font-bold"
+            className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition flex items-center justify-center text-xs font-bold"
             aria-label="Close modal"
           >
-            ✕
+            Close
           </button>
 
           {/* Modal Header */}
