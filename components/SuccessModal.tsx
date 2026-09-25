@@ -72,7 +72,7 @@ export default function SuccessModal({ leadData, onClose }) {
                 <p className="text-[11px] text-gray-400">Complete 16-Week Curriculum, Projects &amp; Fees</p>
               </div>
               <span className="shrink-0 text-[10px] font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                PDF (19 MB)
+                PDF (15 MB)
               </span>
             </div>
 
