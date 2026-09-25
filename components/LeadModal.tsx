@@ -182,6 +182,9 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
                 <option value="Recent 12th Passout">Recent 12th Passout</option>
                 <option value="Current College Student">Current College Student (1st to Final Year)</option>
                 <option value="Fresher / Job Seeker">Fresher / Job Seeker</option>
+                <option value="working professional - Tech">working proffessional (Tech)</option>
+                <option value="working professional - Non-Tech">working proffessional (Non-tech)</option>
+              <option value="others">others</option>
               </select>
             </div>
 
