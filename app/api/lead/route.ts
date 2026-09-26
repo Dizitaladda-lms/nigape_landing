@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
 
 // CRM endpoint and related configuration are read from environment variables.
-// Fallback values are provided for local development.
-const DIZITALADDA_CRM_ENDPOINT = process.env.DIZITALADDA_CRM_ENDPOINT || 'https://dizitaladda-crm.onrender.com/api/public/leads';
+// Fallback values point directly to the live CRM production endpoint.
+const DIZITALADDA_CRM_ENDPOINT =
+  process.env.DIZITALADDA_CRM_ENDPOINT ||
+  process.env.CRM_ENDPOINT ||
+  'https://leads.dizitaladda.com/api/public/leads';
 const CRM_DOMAIN = process.env.CRM_DOMAIN || 'Nigape';
 const CRM_COURSE = process.env.CRM_COURSE || 'Generative AI & Autonomous AI Agents';
 
@@ -138,7 +141,7 @@ export async function POST(request: Request) {
     let crmStatus = null;
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 12000); // 12s timeout for Render cold starts
+      const timeoutId = setTimeout(() => controller.abort(), 25000); // 25s timeout for reliable forwarding
 
       const crmRes = await fetch(DIZITALADDA_CRM_ENDPOINT, {
         method: 'POST',
