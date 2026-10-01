@@ -46,16 +46,16 @@ export default function TestimonialsSection({ onOpenModal }) {
           </p>
         </div>
 
-        {/* Video Testimonials Grid - Fully Responsive */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        {/* Video Testimonials Grid - Large & High Visibility */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#0d0f1b] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between group"
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#0d0f1b] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
             >
               <div>
                 {/* Rating & Hike Badge */}
-                <div className="flex items-center justify-between gap-2 mb-3">
+                <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="text-xs sm:text-sm font-bold text-amber-400 tracking-wider">
                     5.0 / 5.0 Rating
                   </span>
@@ -64,31 +64,31 @@ export default function TestimonialsSection({ onOpenModal }) {
                   </span>
                 </div>
 
-                {/* Video Review Player */}
-                <div className="relative rounded-xl overflow-hidden bg-black border border-white/10 aspect-[9/16] max-h-[440px] w-full">
+                {/* Video Review Player - Enlarged without any cutting */}
+                <div className="relative rounded-2xl overflow-hidden bg-black border border-white/15 w-full h-[480px] sm:h-[540px] lg:h-[580px] flex items-center justify-center shadow-inner">
                   <video
                     src={t.videoUrl}
                     controls
                     playsInline
                     preload="metadata"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </div>
 
               {/* Author Info */}
-              <div className="mt-4 pt-3.5 border-t border-white/10 flex items-center gap-3">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#9234eb]/40 to-[#FF40EB]/40 border border-[#FF40EB]/40 flex items-center justify-center font-bold text-[11px] sm:text-xs text-white tracking-wider shrink-0">
+              <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#9234eb]/40 to-[#FF40EB]/40 border border-[#FF40EB]/40 flex items-center justify-center font-bold text-xs text-white tracking-wider shrink-0">
                   {t.initials}
                 </div>
                 <div className="min-w-0">
-                  <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-[#FF40EB] transition-colors truncate">
+                  <h4 className="text-sm font-bold text-white group-hover:text-[#FF40EB] transition-colors truncate">
                     {t.name}
                   </h4>
-                  <div className="text-[10px] sm:text-[11px] text-emerald-400 font-semibold truncate">
+                  <div className="text-xs text-emerald-400 font-semibold truncate">
                     {t.newRole}
                   </div>
-                  <div className="text-[9px] sm:text-[10px] text-gray-400 line-through truncate">
+                  <div className="text-[10px] text-gray-400 line-through truncate">
                     {t.prevRole}
                   </div>
                 </div>
