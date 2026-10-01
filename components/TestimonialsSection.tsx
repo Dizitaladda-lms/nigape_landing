@@ -8,7 +8,7 @@ export default function TestimonialsSection({ onOpenModal }) {
       prevRole: 'Junior Backend Developer (₹4.5 LPA)',
       newRole: 'GenAI Engineer at AI SaaS (₹14.8 LPA)',
       hike: '95% Hike',
-      review: 'I was stuck maintaining legacy Django code. Learning LangGraph, Vector DBs and building autonomous research agents at NIGAPE completely changed my career trajectory. The 1:1 mentor mock interviews gave me immense confidence.',
+      videoUrl: '/reviews/review-1.mp4',
     },
     {
       name: 'Sneha Patel',
@@ -16,7 +16,7 @@ export default function TestimonialsSection({ onOpenModal }) {
       prevRole: 'Operations Analyst',
       newRole: 'Prompt & Workflow Architect (₹11 LPA)',
       hike: '95% Hike',
-      review: 'I had zero hardcore coding experience. The faculty at the South Delhi GK2 campus broke down prompt engineering, tokenomics, and CrewAI into super intuitive concepts. I automated my first customer-facing agent in week 6!',
+      videoUrl: '/reviews/review-2.mp4',
     },
     {
       name: 'Karan Singhal',
@@ -24,7 +24,7 @@ export default function TestimonialsSection({ onOpenModal }) {
       prevRole: 'B.Tech Final Year Student',
       newRole: 'Associate AI Specialist (₹16 LPA)',
       hike: '95% Hike',
-      review: 'While everyone in my college was doing basic web dev projects, my NIGAPE capstone on Multi-Document RAG with Cohere Re-ranking blew away the interview panel. The project showcase was the single reason I got hired.',
+      videoUrl: '/reviews/review-3.mp4',
     }
   ];
 
@@ -42,20 +42,20 @@ export default function TestimonialsSection({ onOpenModal }) {
             <span className="gradient-text-pink">NIGAPE Alumni</span>
           </h2>
           <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
-            Hear how our learners transitioned into high-growth AI engineering positions.
+            Watch real feedback and journey from our students transitioning into high-growth AI engineering positions.
           </p>
         </div>
 
-        {/* Testimonials Grid - Fully Responsive */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+        {/* Video Testimonials Grid - Fully Responsive */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#0d0f1b] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between group"
+              className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#0d0f1b] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between group"
             >
               <div>
                 {/* Rating & Hike Badge */}
-                <div className="flex items-center justify-between gap-2 mb-3.5 sm:mb-4">
+                <div className="flex items-center justify-between gap-2 mb-3">
                   <span className="text-xs sm:text-sm font-bold text-amber-400 tracking-wider">
                     5.0 / 5.0 Rating
                   </span>
@@ -64,13 +64,20 @@ export default function TestimonialsSection({ onOpenModal }) {
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed italic">
-                  "{t.review}"
-                </p>
+                {/* Video Review Player */}
+                <div className="relative rounded-xl overflow-hidden bg-black border border-white/10 aspect-[9/16] max-h-[440px] w-full">
+                  <video
+                    src={t.videoUrl}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
 
               {/* Author Info */}
-              <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-white/10 flex items-center gap-3">
+              <div className="mt-4 pt-3.5 border-t border-white/10 flex items-center gap-3">
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#9234eb]/40 to-[#FF40EB]/40 border border-[#FF40EB]/40 flex items-center justify-center font-bold text-[11px] sm:text-xs text-white tracking-wider shrink-0">
                   {t.initials}
                 </div>
@@ -96,7 +103,7 @@ export default function TestimonialsSection({ onOpenModal }) {
             onClick={onOpenModal}
             className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-300 border border-white/20"
           >
-            Read More Student Stories &amp; Reviews →
+            Read More Student Stories &amp; Reviews
           </button>
         </div>
 
