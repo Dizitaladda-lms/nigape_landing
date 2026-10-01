@@ -52,6 +52,7 @@ export async function POST(request: Request) {
       fullName,
       email,
       phone,
+      course,
       experience,
       learningMode,
       goal,
@@ -62,6 +63,9 @@ export async function POST(request: Request) {
       utm_campaign,
       utm_content,
       utm_term,
+      fbclid,
+      gclid,
+      gad_source,
       landing_page_url,
       timestamp
     } = data;
@@ -107,14 +111,19 @@ export async function POST(request: Request) {
     }
 
     // Map source strictly to accepted CRM enums ('META', 'GOOGLE', 'LANDING_PAGE', 'WEBSITE')
+    // Priority: utm_source > fbclid (Facebook click ID) > gclid/gad_source (Google click ID) > default
     let crmSource = 'LANDING_PAGE';
     if (utm_source) {
       const lower = utm_source.toLowerCase();
-      if (lower.includes('fb') || lower.includes('meta') || lower.includes('instagram') || lower.includes('ig')) {
+      if (lower.includes('fb') || lower.includes('facebook') || lower.includes('meta') || lower.includes('instagram') || lower.includes('ig')) {
         crmSource = 'META';
       } else if (lower.includes('google') || lower.includes('adwords') || lower.includes('gads')) {
         crmSource = 'GOOGLE';
       }
+    } else if (fbclid) {
+      crmSource = 'META';
+    } else if (gclid || gad_source) {
+      crmSource = 'GOOGLE';
     }
 
     // Payload formatted strictly to dizitaladda-crm specifications
@@ -124,7 +133,7 @@ export async function POST(request: Request) {
       mobile: cleanPhone,
       email: email && email.trim() ? email.trim() : `${cleanPhone}@${CRM_DOMAIN.toLowerCase()}.com`,
       domain: CRM_DOMAIN,
-      interested_course: CRM_COURSE,
+      interested_course: course && course.trim() ? course.trim() : CRM_COURSE,
       source: crmSource,
       landing_page_url: landing_page_url || 'https://www.nigape.com',
       utm_source: utm_source || undefined,
@@ -132,7 +141,7 @@ export async function POST(request: Request) {
       utm_campaign: utm_campaign || undefined,
       utm_content: utm_content || undefined,
       utm_term: utm_term || undefined,
-      remarks: `Profile: ${experience || 'N/A'} | Goal: ${goal || 'Counseling'} | Form: ${source || 'Lead Page'}`,
+      remarks: `Course: ${course || CRM_COURSE} | Profile: ${experience || 'N/A'} | Goal: ${goal || 'Counseling'} | Form: ${source || 'Lead Page'}`,
     };
 
     console.log('[NIGAPE -> CRM FORWARDING]:', crmPayload);

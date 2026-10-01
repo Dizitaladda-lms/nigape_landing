@@ -6,6 +6,7 @@ export default function HeroSection({ onSubmitSuccess }) {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
+    course: 'Diploma in Generative AI & Prompt Engineering (12 Months)',
     experience: 'Recent 12th Passout',
   });
 
@@ -19,9 +20,12 @@ export default function HeroSection({ onSubmitSuccess }) {
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
       const utms = {
-        utm_source: urlParams.get('utm_source') || 'direct_ads',
-        utm_medium: urlParams.get('utm_medium') || 'web',
-        utm_campaign: urlParams.get('utm_campaign') || 'genai_bootcamp',
+        utm_source: urlParams.get('utm_source') || '',
+        utm_medium: urlParams.get('utm_medium') || '',
+        utm_campaign: urlParams.get('utm_campaign') || '',
+        utm_content: urlParams.get('utm_content') || '',
+        utm_term: urlParams.get('utm_term') || '',
+        fbclid: urlParams.get('fbclid') || '',
         gclid: urlParams.get('gclid') || '',
         gad_source: urlParams.get('gad_source') || '',
       };
@@ -298,6 +302,30 @@ export default function HeroSection({ onSubmitSuccess }) {
                     {phoneError && (
                       <p className="text-[11px] text-red-400 mt-1 font-medium">{phoneError}</p>
                     )}
+                  </div>
+
+                  {/* Course Interested In */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">
+                      Course Interested In <span className="text-[#FF40EB]">*</span>
+                    </label>
+                    <select
+                      name="course"
+                      value={formData.course}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl bg-[#141622] border border-white/15 text-white text-sm focus:outline-none focus:border-[#FF40EB] transition cursor-pointer"
+                    >
+                      <option value="Diploma in Generative AI & Prompt Engineering">Diploma in Generative AI & Prompt Engineering (12 Months)</option>
+                      <option value="Advanced Generative AI & Prompt Engineering">Advanced Generative AI & Prompt Engineering (6 Months)</option>
+                      <option value="Advanced Certification in Generative AI & Prompt Engineering">Advanced Certification in GenAI & Prompt Engineering</option>
+                      <option value="Generative AI for Professionals">Generative AI for Professionals</option>
+                      <option value="AI Literacy for Everyone">AI Literacy for Everyone</option>
+                      <option value="NLP Professional">NLP Professional</option>
+                      <option value="Computer Vision Professional">Computer Vision Professional</option>
+                      <option value="Deep Learning Professional">Deep Learning Professional</option>
+                      <option value="UG Degree Programs (3 Years)">UG Degree in AI (3 Years - DU SOL / Jain University)</option>
+                      <option value="PG Programs (2 Years)">PG in AI (2 Years - DU SOL / Manipal University)</option>
+                    </select>
                   </div>
 
                   {/* Current Background */}

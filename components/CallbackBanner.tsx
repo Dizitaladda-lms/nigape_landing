@@ -25,16 +25,33 @@ export default function CallbackBanner({ onSubmitSuccess }) {
       }
     } catch (e) {}
 
+    let utmData: Record<string, string> = {};
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      utmData = {
+        utm_source: urlParams.get('utm_source') || '',
+        utm_medium: urlParams.get('utm_medium') || '',
+        utm_campaign: urlParams.get('utm_campaign') || '',
+        utm_content: urlParams.get('utm_content') || '',
+        utm_term: urlParams.get('utm_term') || '',
+        fbclid: urlParams.get('fbclid') || '',
+        gclid: urlParams.get('gclid') || '',
+        gad_source: urlParams.get('gad_source') || '',
+      };
+    }
+
     const leadPayload = {
       fullName: 'Quick Callback Request',
       phone: cleanPhone,
       deviceId,
+      course: 'Generative AI & Autonomous AI Agents',
       email: 'callback@lead.nigape.com',
       experience: 'Quick Callback',
       learningMode: 'Flexible',
       timestamp: new Date().toISOString(),
       source: 'Mid-Page Quick Callback Banner',
       landing_page_url: typeof window !== 'undefined' ? window.location.href : 'https://nigape.com',
+      ...utmData,
     };
 
     // Forward to CRM with rate-limit check
