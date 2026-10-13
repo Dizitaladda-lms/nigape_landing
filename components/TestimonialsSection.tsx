@@ -1,6 +1,13 @@
 'use client';
 
+import { useRef, useState } from 'react';
+
 export default function TestimonialsSection({ onOpenModal }) {
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const testimonials = [
     {
       name: 'Aditya Mathur',
@@ -28,12 +35,81 @@ export default function TestimonialsSection({ onOpenModal }) {
     }
   ];
 
+  // Scroll to a specific slide (for mobile horizontal slider)
+  const scrollToSlide = (index: number, autoPlayNext = false) => {
+    const nextIdx = (index + testimonials.length) % testimonials.length;
+    setActiveIndex(nextIdx);
+
+    const card = cardRefs.current[nextIdx];
+    const slider = sliderRef.current;
+
+    if (card && slider) {
+      const targetLeft = card.offsetLeft - (slider.clientWidth - card.clientWidth) / 2;
+      slider.scrollTo({
+        left: Math.max(0, targetLeft),
+        behavior: 'smooth',
+      });
+    }
+
+    // Pause other videos; optionally auto-play the next video
+    videoRefs.current.forEach((vid, i) => {
+      if (!vid) return;
+      if (i !== nextIdx) {
+        vid.pause();
+      } else if (autoPlayNext) {
+        vid.currentTime = 0;
+        vid.play().catch(() => {
+          // Browser may block unmuted autoplay if no recent gesture, ignore gracefully
+        });
+      }
+    });
+  };
+
+  // When a video starts playing, pause any other playing video and sync active index
+  const handleVideoPlay = (index: number) => {
+    setActiveIndex(index);
+    videoRefs.current.forEach((vid, i) => {
+      if (vid && i !== index && !vid.paused) {
+        vid.pause();
+      }
+    });
+  };
+
+  // When a video finishes playing, automatically move to the next card and play it
+  const handleVideoEnded = (index: number) => {
+    const nextIdx = (index + 1) % testimonials.length;
+    scrollToSlide(nextIdx, true);
+  };
+
+  // Update active dot when user manually swipes on mobile
+  const handleScroll = () => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    const center = slider.scrollLeft + slider.clientWidth / 2;
+    let closestIdx = 0;
+    let minDiff = Infinity;
+
+    cardRefs.current.forEach((card, idx) => {
+      if (!card) return;
+      const cardCenter = card.offsetLeft + card.clientWidth / 2;
+      const diff = Math.abs(center - cardCenter);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = idx;
+      }
+    });
+
+    if (closestIdx !== activeIndex) {
+      setActiveIndex(closestIdx);
+    }
+  };
+
   return (
     <section className="py-12 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#06070d] relative border-t border-white/10">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 px-2">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-2">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/10 px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#FF40EB]">
             Proven Career Transformations
           </span>
@@ -46,12 +122,19 @@ export default function TestimonialsSection({ onOpenModal }) {
           </p>
         </div>
 
-        {/* Video Testimonials Grid - Large & High Visibility */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+        {/* Video Testimonials: Horizontal Snap Carousel on Mobile, 3-Column Grid on Desktop */}
+        <div
+          ref={sliderRef}
+          onScroll={handleScroll}
+          className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth pb-4 md:pb-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#0d0f1b] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
+              ref={(el) => {
+                cardRefs.current[idx] = el;
+              }}
+              className="w-[86vw] max-w-[360px] sm:w-[380px] md:w-auto md:max-w-none shrink-0 snap-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#0d0f1b] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 md:hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
             >
               <div>
                 {/* Rating & Hike Badge */}
@@ -65,12 +148,17 @@ export default function TestimonialsSection({ onOpenModal }) {
                 </div>
 
                 {/* Video Review Player - Enlarged without any cutting */}
-                <div className="relative rounded-2xl overflow-hidden bg-black border border-white/15 w-full h-[480px] sm:h-[540px] lg:h-[580px] flex items-center justify-center shadow-inner">
+                <div className="relative rounded-2xl overflow-hidden bg-black border border-white/15 w-full h-[460px] sm:h-[540px] lg:h-[580px] flex items-center justify-center shadow-inner">
                   <video
+                    ref={(el) => {
+                      videoRefs.current[idx] = el;
+                    }}
                     src={t.videoUrl}
                     controls
                     playsInline
                     preload="metadata"
+                    onPlay={() => handleVideoPlay(idx)}
+                    onEnded={() => handleVideoEnded(idx)}
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -97,8 +185,45 @@ export default function TestimonialsSection({ onOpenModal }) {
           ))}
         </div>
 
+        {/* Mobile Swipe Controls & Pagination Dots */}
+        <div className="flex md:hidden items-center justify-center gap-4 mt-4">
+          <button
+            type="button"
+            onClick={() => scrollToSlide(activeIndex - 1, false)}
+            aria-label="Previous video"
+            className="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-white flex items-center justify-center active:scale-90 transition hover:border-[#FF40EB]"
+          >
+            ←
+          </button>
+
+          <div className="flex items-center gap-2">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => scrollToSlide(idx, false)}
+                aria-label={`Go to video ${idx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeIndex === idx
+                    ? 'w-7 bg-[#FF40EB] shadow-[0_0_10px_#FF40EB]'
+                    : 'w-2 bg-white/25'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => scrollToSlide(activeIndex + 1, false)}
+            aria-label="Next video"
+            className="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-white flex items-center justify-center active:scale-90 transition hover:border-[#FF40EB]"
+          >
+            →
+          </button>
+        </div>
+
         {/* Reviews Trust Callout */}
-        <div className="mt-10 sm:mt-12 text-center px-4">
+        <div className="mt-8 sm:mt-12 text-center px-4">
           <button
             onClick={onOpenModal}
             className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-300 border border-white/20"

@@ -169,35 +169,6 @@ export default function HeroSection({ onSubmitSuccess }) {
               </div>
             </div>
 
-            {/* Mobile Animated Attention Callout (Shown only on mobile to guide user directly to form) */}
-            <div className="lg:hidden p-4 rounded-2xl bg-gradient-to-r from-[#FF40EB]/15 via-[#9234eb]/20 to-[#22d3ee]/15 border border-[#FF40EB]/60 backdrop-blur-md animate-breathing-glow shadow-[0_0_30px_rgba(255,64,235,0.35)]">
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF40EB] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF40EB]"></span>
-                  </span>
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#FF40EB]">
-                    Next Cohort Admissions Open
-                  </span>
-                </div>
-                <span className="text-[10px] font-extrabold text-yellow-300 bg-yellow-400/20 border border-yellow-400/40 px-2 py-0.5 rounded animate-pulse">
-                  Only 7 Seats Left
-                </span>
-              </div>
-              
-              <p className="text-xs text-gray-200 mb-3 font-medium">
-                Reserve your free seat for <span className="text-white font-bold">1:1 Career Counseling &amp; Complete Syllabus</span>.
-              </p>
-
-              <a
-                href="#lead-form"
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#FF40EB] via-[#d922c5] to-[#9234eb] text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center shadow-[0_0_25px_rgba(255,64,235,0.6)] animate-shimmer active:scale-95 transition"
-              >
-                <span>Fill Quick Application Form</span>
-              </a>
-            </div>
-
             {/* Trust Social Proof Row */}
             <div className="pt-2 flex flex-wrap items-center gap-6 text-sm text-gray-300 border-t border-white/10">
               <div className="flex items-center gap-2">

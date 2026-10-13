@@ -98,26 +98,6 @@ export default function Footer({ onOpenModal, onOpenAdmin }) {
           <div>
             © {new Date().getFullYear()} NIGAPE (National Institute of Generative AI &amp; Prompt Engineering). All rights reserved.
           </div>
-
-          <div className="flex items-center gap-4">
-            <button onClick={onOpenModal} className="hover:text-gray-300 transition">
-              Privacy Policy
-            </button>
-            <span>•</span>
-            <button onClick={onOpenModal} className="hover:text-gray-300 transition">
-              Terms &amp; Conditions
-            </button>
-            <span>•</span>
-            {/* Secret Admin Leads Viewer Trigger */}
-            <button
-              onClick={onOpenAdmin}
-              title="Admin Leads Drawer"
-              className="text-gray-600 hover:text-[#FF40EB] transition"
-            >
-              Admin Leads
-            </button>
-          </div>
-
           <button
             onClick={scrollToTop}
             className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition text-[10px]"
