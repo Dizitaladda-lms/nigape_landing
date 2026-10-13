@@ -16,6 +16,7 @@ export default function TestimonialsSection({ onOpenModal }) {
       newRole: 'GenAI Engineer at AI SaaS (₹14.8 LPA)',
       hike: '95% Hike',
       videoUrl: '/reviews/review-1.mp4',
+      posterUrl: '/reviews/thumb-1.jpg',
     },
     {
       name: 'Sneha Patel',
@@ -24,6 +25,7 @@ export default function TestimonialsSection({ onOpenModal }) {
       newRole: 'Prompt & Workflow Architect (₹11 LPA)',
       hike: '95% Hike',
       videoUrl: '/reviews/review-2.mp4',
+      posterUrl: '/reviews/thumb-2.jpg',
     },
     {
       name: 'Karan Singhal',
@@ -32,6 +34,7 @@ export default function TestimonialsSection({ onOpenModal }) {
       newRole: 'Associate AI Specialist (₹16 LPA)',
       hike: '95% Hike',
       videoUrl: '/reviews/review-3.mp4',
+      posterUrl: '/reviews/thumb-3.jpg',
     }
   ];
 
@@ -154,6 +157,7 @@ export default function TestimonialsSection({ onOpenModal }) {
                       videoRefs.current[idx] = el;
                     }}
                     src={t.videoUrl}
+                    poster={t.posterUrl}
                     controls
                     playsInline
                     preload="metadata"
