@@ -227,14 +227,7 @@ export default function TestimonialsSection({ onOpenModal }) {
         </div>
 
         {/* Reviews Trust Callout */}
-        <div className="mt-8 sm:mt-12 text-center px-4">
-          <button
-            onClick={onOpenModal}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-300 border border-white/20"
-          >
-            Read More Student Stories &amp; Reviews
-          </button>
-        </div>
+      
 
       </div>
     </section>
