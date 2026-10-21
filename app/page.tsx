@@ -19,6 +19,7 @@ import StickyBottomBar from '@/components/StickyBottomBar';
 import LeadModal from '@/components/LeadModal';
 import SuccessModal from '@/components/SuccessModal';
 import AdminLeadsDrawer from '@/components/AdminLeadsDrawer';
+import FloatingContactButtons from '@/components/FloatingContactButtons';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -90,6 +91,9 @@ export default function Home() {
 
       {/* 16. Mobile Sticky Conversion Bar */}
       <StickyBottomBar onOpenModal={() => setIsModalOpen(true)} />
+
+      {/* Floating WhatsApp & Direct Call Buttons */}
+      <FloatingContactButtons />
 
       {/* Interactive Pop-up Lead Capture Modal */}
       <LeadModal
