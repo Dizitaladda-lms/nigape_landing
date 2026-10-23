@@ -52,7 +52,7 @@ export default function ProjectsSection({ onOpenModal }) {
 
         {/* Project Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((proj, idx) => (
+          {projects.slice(0, 2).map((proj, idx) => (
             <div
               key={idx}
               className="p-7 sm:p-8 rounded-3xl bg-[#0c0d15] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
@@ -77,7 +77,7 @@ export default function ProjectsSection({ onOpenModal }) {
 
                 {/* Tech Badges */}
                 <div className="flex flex-wrap gap-2 mt-5">
-                  {proj.stack.map((t, i) => (
+                  {proj.stack.slice(0, 3).map((t, i) => (
                     <span
                       key={i}
                       className="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-gray-300"

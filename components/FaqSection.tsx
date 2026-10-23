@@ -59,7 +59,7 @@ export default function FaqSection({ onOpenModal }) {
 
         {/* FAQs Accordion */}
         <div className="space-y-4">
-          {faqs.map((item, idx) => {
+          {faqs.slice(0, 4).map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div

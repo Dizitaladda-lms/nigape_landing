@@ -139,7 +139,7 @@ export default function CurriculumSection({ onOpenModal }) {
           
           {/* Module Selector List (Left Column) */}
           <div className="lg:col-span-5 space-y-3">
-            {modules.map((m, idx) => {
+            {modules.slice(0, 4).map((m, idx) => {
               const isSelected = activeModule === idx;
               return (
                 <button
@@ -216,7 +216,7 @@ export default function CurriculumSection({ onOpenModal }) {
                   Key Topics Covered:
                 </h4>
                 <div className="space-y-2.5">
-                  {modules[activeModule].topics.map((topic, i) => (
+                  {modules[activeModule].topics.slice(0, 3).map((topic, i) => (
                     <div key={i} className="flex items-start gap-3 text-sm text-gray-200">
                       <span className="text-[#FF40EB] font-bold shrink-0 mt-0.5">•</span>
                       <span>{topic}</span>
@@ -231,7 +231,7 @@ export default function CurriculumSection({ onOpenModal }) {
                   Technologies &amp; Frameworks Mastered:
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {modules[activeModule].skills.map((skill, i) => (
+                  {modules[activeModule].skills.slice(0, 4).map((skill, i) => (
                     <span
                       key={i}
                       className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/15 text-white"

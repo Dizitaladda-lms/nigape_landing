@@ -26,7 +26,7 @@ export default function HiringPartners({ onOpenModal }) {
 
         {/* Company Logos/Badges Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
-          {partners.map((company, idx) => (
+          {partners.slice(0, 8).map((company, idx) => (
             <div
               key={idx}
               className="py-5 px-3 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#FF40EB]/40 transition-all duration-300 flex items-center justify-center text-center group hover:bg-white/[0.06]"
@@ -39,7 +39,7 @@ export default function HiringPartners({ onOpenModal }) {
         </div>
 
         {/* Placement Support Features Banner */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           <div className="p-6 rounded-2xl bg-gradient-to-b from-[#111322] to-[#0a0b14] border border-white/10 text-left">
             <div className="text-[#FF40EB] font-mono text-2xl font-black mb-2">01.</div>
             <h4 className="text-base font-bold text-white">ATS-Proof Resume Optimization</h4>

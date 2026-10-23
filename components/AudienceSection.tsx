@@ -79,7 +79,7 @@ export default function AudienceSection({ onOpenModal }) {
                 </p>
 
                 <div className="space-y-2.5 sm:space-y-3">
-                  {p.bullets.map((b, i) => (
+                  {p.bullets.slice(0, 2).map((b, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs sm:text-sm text-gray-300 leading-relaxed">
                       <span className="text-[#FF40EB] font-bold shrink-0 mt-0.5">•</span>
                       <span>{b}</span>

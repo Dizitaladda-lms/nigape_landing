@@ -15,7 +15,7 @@ export default function TechMarquee() {
   ];
 
   return (
-    <div className="relative py-8 bg-black/60 border-y border-white/10 overflow-hidden backdrop-blur-md">
+    <div className="relative overflow-hidden border-y border-[#f0dce9] bg-[#fff6fb] py-5">
       <div className="max-w-7xl mx-auto px-4 mb-4 text-center">
         <p className="text-xs uppercase tracking-widest text-[#FF40EB] font-bold">
           Industry-Standard AI Tech Stack You Will Master
@@ -28,11 +28,11 @@ export default function TechMarquee() {
           {[...tools, ...tools].map((tool, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/[0.04] border border-white/10 hover:border-[#FF40EB]/50 transition-colors shadow-sm"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-[#ead8e5] bg-white px-4 py-2 shadow-sm transition-colors hover:border-[#FF40EB]/50"
             >
               <div className="w-2 h-2 rounded-full bg-[#FF40EB] animate-pulse" />
-              <span className="text-sm font-bold text-white tracking-wide">{tool.name}</span>
-              <span className="text-[10px] text-gray-400 bg-white/10 px-1.5 py-0.5 rounded font-mono">
+              <span className="text-sm font-bold tracking-wide text-[#24152b]">{tool.name}</span>
+              <span className="rounded bg-[#fff0fb] px-1.5 py-0.5 font-mono text-[10px] text-[#756879]">
                 {tool.category}
               </span>
             </div>
@@ -40,8 +40,8 @@ export default function TechMarquee() {
         </div>
 
         {/* Gradient edge fades */}
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent pointer-events-none" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#fff6fb] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#fff6fb] to-transparent" />
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export default function StickyBottomBar({ onOpenModal }) {
   };
 
   return (
-    <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0a0b12]/95 backdrop-blur-xl border-t border-[#FF40EB]/40 p-3 shadow-[0_-8px_30px_rgba(255,64,235,0.25)]">
+    <div className="sticky-light-surface sm:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-[#FF40EB]/40 bg-[#fffafd]/95 p-3 shadow-[0_-8px_30px_rgba(255,64,235,0.18)] backdrop-blur-xl">
       <div className="flex items-center justify-between gap-3">
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">

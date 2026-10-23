@@ -108,15 +108,15 @@ export default function HeroSection({ onSubmitSuccess }) {
   };
 
   return (
-    <section id="hero" className="relative pt-6 sm:pt-10 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="hero" className="relative px-4 pb-10 pt-5 sm:px-6 sm:pt-7 lg:px-8 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[500px] bg-gradient-to-tr from-[#9234eb]/20 via-[#FF40EB]/15 to-transparent blur-[140px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 items-start gap-7 lg:grid-cols-12 lg:gap-10">
           
           {/* Left Column: Core Value Proposition */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="space-y-5 text-left lg:col-span-7">
             
             {/* High-Converting Ad Pill */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#FF40EB] backdrop-blur-md shadow-[0_0_20px_rgba(255,64,235,0.2)]">
@@ -124,19 +124,19 @@ export default function HeroSection({ onSubmitSuccess }) {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-black tracking-tight text-white leading-[1.15]">
+            <h1 className="text-3xl font-black tracking-tight text-white leading-[1.08] sm:text-5xl lg:text-[3.15rem]">
               Master <span className="gradient-text-pink">Generative AI</span> &amp; <br />
               <span className="text-white drop-shadow-[0_0_35px_rgba(255,64,235,0.6)]">Autonomous AI Agents</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
-              Transform into a production-ready AI Engineer in 16 weeks. Build real-world RAG systems, multi-agent frameworks (CrewAI, LangGraph), fine-tune open-source LLMs, with 1:1 MAANG mentorship and dedicated placement support.
+            <p className="max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
+              Become a job-ready AI Engineer in 16 weeks with hands-on GenAI, RAG and AI agent projects.
             </p>
 
             {/* USP Points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-sm">
+            <div className="grid grid-cols-1 gap-2.5 pt-1 sm:grid-cols-3">
+              <div className="flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] p-2.5 backdrop-blur-sm">
                 <span className="text-[#FF40EB] font-bold text-sm shrink-0 mt-0.5">•</span>
                 <div>
                   <h4 className="text-sm font-bold text-white">Campus &amp; Live Online</h4>
@@ -144,7 +144,7 @@ export default function HeroSection({ onSubmitSuccess }) {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-sm">
+              <div className="flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] p-2.5 backdrop-blur-sm">
                 <span className="text-[#FF40EB] font-bold text-sm shrink-0 mt-0.5">•</span>
                 <div>
                   <h4 className="text-sm font-bold text-white">15+ Enterprise Projects</h4>
@@ -152,7 +152,7 @@ export default function HeroSection({ onSubmitSuccess }) {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-sm">
+              <div className="flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] p-2.5 backdrop-blur-sm">
                 <span className="text-[#FF40EB] font-bold text-sm shrink-0 mt-0.5">•</span>
                 <div>
                   <h4 className="text-sm font-bold text-white">1:1 MAANG Mentors</h4>
@@ -160,7 +160,7 @@ export default function HeroSection({ onSubmitSuccess }) {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-sm">
+              <div className="hidden">
                 <span className="text-[#FF40EB] font-bold text-sm shrink-0 mt-0.5">•</span>
                 <div>
                   <h4 className="text-sm font-bold text-white">100% Placement Prep</h4>
@@ -170,7 +170,7 @@ export default function HeroSection({ onSubmitSuccess }) {
             </div>
 
             {/* Trust Social Proof Row */}
-            <div className="pt-2 flex flex-wrap items-center gap-6 text-sm text-gray-300 border-t border-white/10">
+            <div className="hidden">
               <div className="flex items-center gap-2">
                 <span className="font-bold text-white">4.9 / 5 Rating</span>
                 <span className="text-xs text-gray-400">(500+ Alumni)</span>
@@ -210,10 +210,10 @@ export default function HeroSection({ onSubmitSuccess }) {
 
             {/* Glowing & Breathing Animated Gradient Border Card */}
             <div className="relative rounded-3xl p-[3px] animated-gradient-border animate-breathing-glow shadow-[0_0_60px_rgba(255,64,235,0.45)]">
-              <div className="dark-surface bg-[#0b0c13] rounded-[22px] p-6 sm:p-8 backdrop-blur-2xl">
+              <div className="dark-surface bg-[#0b0c13] rounded-[22px] p-5 sm:p-6 backdrop-blur-2xl">
                 
                 {/* Form Header */}
-                <div className="text-left mb-6">
+                <div className="mb-4 text-left">
                   <div className="flex items-center justify-between mb-2">
                     <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#FF40EB] bg-[#FF40EB]/10 px-2.5 py-1 rounded-full border border-[#FF40EB]/30">
                       <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FF40EB] animate-ping" />
@@ -223,16 +223,16 @@ export default function HeroSection({ onSubmitSuccess }) {
                       7 Seats Left
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">
+                  <h3 className="text-xl font-black leading-tight text-white sm:text-2xl">
                     Book Free 1:1 AI Career Counseling
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-400 mt-1">
-                    Get detailed syllabus, project portfolio &amp; scholarship roadmap.
+                  <p className="mt-1 text-xs text-gray-400 sm:text-sm">
+                    Get the syllabus and scholarship details on WhatsApp.
                   </p>
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-4 text-left">
+                <form onSubmit={handleSubmit} className="space-y-3 text-left">
                   
                   {/* Full Name */}
                   <div>
@@ -246,7 +246,7 @@ export default function HeroSection({ onSubmitSuccess }) {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-[#FF40EB] focus:ring-2 focus:ring-[#FF40EB]/40 transition"
+                      className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 transition focus:border-[#FF40EB] focus:outline-none focus:ring-2 focus:ring-[#FF40EB]/40"
                     />
                   </div>
 
@@ -267,57 +267,12 @@ export default function HeroSection({ onSubmitSuccess }) {
                         onChange={handleChange}
                         maxLength={10}
                         placeholder="98765 43210"
-                        className="w-full px-4 py-3 rounded-r-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-[#FF40EB] focus:ring-2 focus:ring-[#FF40EB]/40 transition"
+                        className="w-full rounded-r-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 transition focus:border-[#FF40EB] focus:outline-none focus:ring-2 focus:ring-[#FF40EB]/40"
                       />
                     </div>
                     {phoneError && (
                       <p className="text-[11px] text-red-400 mt-1 font-medium">{phoneError}</p>
                     )}
-                  </div>
-
-                  {/* Course Interested In */}
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">
-                      Course Interested In <span className="text-[#FF40EB]">*</span>
-                    </label>
-                    <select
-                      name="course"
-                      value={formData.course}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#141622] border border-white/15 text-white text-sm focus:outline-none focus:border-[#FF40EB] transition cursor-pointer"
-                    >
-                      <option value="Diploma in Generative AI & Prompt Engineering">Diploma in Generative AI & Prompt Engineering (12 Months)</option>
-                      <option value="Advanced Generative AI & Prompt Engineering">Advanced Generative AI & Prompt Engineering (6 Months)</option>
-                      <option value="Advanced Certification in Generative AI & Prompt Engineering">Advanced Certification in GenAI & Prompt Engineering</option>
-                      <option value="Generative AI for Professionals">Generative AI for Professionals</option>
-                      <option value="AI Literacy for Everyone">AI Literacy for Everyone</option>
-                      <option value="NLP Professional">NLP Professional</option>
-                      <option value="Computer Vision Professional">Computer Vision Professional</option>
-                      <option value="Deep Learning Professional">Deep Learning Professional</option>
-                      <option value="UG Degree Programs (3 Years)">UG Degree in AI (3 Years - DU SOL / Jain University)</option>
-                      <option value="PG Programs (2 Years)">PG in AI (2 Years - DU SOL / Manipal University)</option>
-                    </select>
-                  </div>
-
-                  {/* Current Background */}
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">
-                      Current Profile / Experience Level
-                    </label>
-                    <select
-                      name="experience"
-                      value={formData.experience}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#141622] border border-white/15 text-white text-sm focus:outline-none focus:border-[#FF40EB] transition cursor-pointer"
-                    >
-                      <option value="Recent 12th Passout">Recent 12th Passout</option>
-                      <option value="Current College Student">Current College Student (1st to Final Year)</option>
-                      <option value="Fresher / Job Seeker">Fresher / Job Seeker</option>
-                      <option value="working proffessional (Tech)">working proffessional (Tech)</option>
-                      <option value="working proffessional (Non-tech)">working proffessional (Non-tech)</option>
-                      <option value="others">others</option>
-                    </select>
-
                   </div>
 
                   {/* Glowing Animated Submit CTA */}

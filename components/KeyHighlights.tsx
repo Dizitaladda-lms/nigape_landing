@@ -66,7 +66,7 @@ export default function KeyHighlights({ onOpenModal }) {
 
         {/* Highlights Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {highlights.map((item, index) => (
+          {highlights.slice(0, 3).map((item, index) => (
             <div
               key={index}
               className="group relative p-7 rounded-2xl bg-gradient-to-b from-[#11121c] to-[#07070c] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1.5 shadow-xl hover:shadow-[0_10px_30px_rgba(255,64,235,0.15)] flex flex-col justify-between"

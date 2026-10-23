@@ -72,7 +72,7 @@ export default function ComparisonTable({ onOpenModal }) {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/10">
-              {features.map((f, idx) => (
+              {features.slice(0, 4).map((f, idx) => (
                 <tr key={idx} className="hover:bg-white/[0.02] transition">
                   <td className="py-4 px-6 font-semibold text-sm text-white">
                     {f.name}
