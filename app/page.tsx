@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-[#FF40EB] selection:text-white relative">
+    <main className="light-theme min-h-screen bg-[#fffafd] text-[#24152b] selection:bg-[#FF40EB] selection:text-white relative">
       {/* 1. Urgency Bar with Live Countdown */}
       <TopUrgencyBanner onOpenModal={() => setIsModalOpen(true)} />
 

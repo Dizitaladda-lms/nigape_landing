@@ -24,7 +24,7 @@ export default function Navbar({ onOpenModal }) {
 
   return (
     <header className="sticky top-[38px] z-40 w-full px-3 sm:px-6 py-3 transition-all">
-      <nav className="max-w-7xl mx-auto bg-black/80 backdrop-blur-xl border border-white/15 rounded-full px-4 sm:px-6 py-2 flex items-center justify-between shadow-2xl shadow-purple-950/20">
+      <nav className="max-w-7xl mx-auto bg-white/90 backdrop-blur-xl border border-[#ead8e5] rounded-full px-4 sm:px-6 py-2 flex items-center justify-between shadow-xl shadow-purple-950/10">
         
         {/* Brand Logo */}
         <a href="#hero" className="flex items-center group py-0.5">
@@ -42,7 +42,7 @@ export default function Navbar({ onOpenModal }) {
               key={link.name}
               href={link.href}
               onClick={(e) => handleScroll(e, link.href)}
-              className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-[#FF40EB] after:absolute after:bottom-0 after:left-0 after:transition-all"
+              className="text-sm font-medium text-[#68586c] hover:text-[#24152b] transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-[#FF40EB] after:absolute after:bottom-0 after:left-0 after:transition-all"
             >
               {link.name}
             </a>
@@ -54,7 +54,7 @@ export default function Navbar({ onOpenModal }) {
           {/* Quick Call */}
           <a
             href="tel:+917428114918"
-            className="hidden md:flex items-center gap-1.5 text-xs text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 transition font-semibold"
+            className="hidden md:flex items-center gap-1.5 text-xs text-[#68586c] hover:text-[#24152b] bg-[#fff4fb] hover:bg-[#fde6f7] px-3 py-1.5 rounded-full border border-[#ead8e5] transition font-semibold"
           >
             <span>+91 74281 14918</span>
           </a>
@@ -72,16 +72,16 @@ export default function Navbar({ onOpenModal }) {
           {/* Mobile Menu Toggle (CSS Bars) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-300 hover:text-white focus:outline-none flex flex-col justify-center items-center gap-1 w-8 h-8"
+            className="lg:hidden p-2 text-[#68586c] hover:text-[#24152b] focus:outline-none flex flex-col justify-center items-center gap-1 w-8 h-8"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (
               <span className="text-xs font-bold text-[#FF40EB]">Close</span>
             ) : (
               <>
-                <span className="w-5 h-0.5 bg-white block rounded"></span>
-                <span className="w-5 h-0.5 bg-white block rounded"></span>
-                <span className="w-5 h-0.5 bg-white block rounded"></span>
+                <span className="w-5 h-0.5 bg-[#24152b] block rounded"></span>
+                <span className="w-5 h-0.5 bg-[#24152b] block rounded"></span>
+                <span className="w-5 h-0.5 bg-[#24152b] block rounded"></span>
               </>
             )}
           </button>
@@ -90,7 +90,7 @@ export default function Navbar({ onOpenModal }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-2 max-w-7xl mx-auto bg-black/95 backdrop-blur-2xl border border-white/15 rounded-2xl p-4 shadow-2xl flex flex-col gap-2">
+        <div className="lg:hidden mt-2 max-w-7xl mx-auto bg-white/95 backdrop-blur-2xl border border-[#ead8e5] rounded-2xl p-4 shadow-xl flex flex-col gap-2">
           {navLinks.map((link) => (
             <a
               key={link.name}

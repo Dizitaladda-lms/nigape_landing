@@ -108,7 +108,7 @@ export default function TestimonialsSection({ onOpenModal }) {
   };
 
   return (
-    <section className="py-12 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#06070d] relative border-t border-white/10">
+    <section className="py-12 sm:py-20 px-3.5 sm:px-6 lg:px-8 bg-[#fff7fc] relative border-t border-[#f0dce9]">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -116,11 +116,11 @@ export default function TestimonialsSection({ onOpenModal }) {
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/10 px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#FF40EB]">
             Proven Career Transformations
           </span>
-          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-snug">
+          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#24152b] tracking-tight leading-snug">
             Real Stories From <br />
             <span className="gradient-text-pink">NIGAPE Alumni</span>
           </h2>
-          <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-[#756879] max-w-xl mx-auto leading-relaxed">
             Watch real feedback and journey from our students transitioning into high-growth AI engineering positions.
           </p>
         </div>
@@ -137,7 +137,7 @@ export default function TestimonialsSection({ onOpenModal }) {
               ref={(el) => {
                 cardRefs.current[idx] = el;
               }}
-              className="w-[86vw] max-w-[360px] sm:w-[380px] md:w-auto md:max-w-none shrink-0 snap-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#0d0f1b] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 md:hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
+              className="w-[86vw] max-w-[360px] sm:w-[380px] md:w-auto md:max-w-none shrink-0 snap-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#eedde9] hover:border-[#FF40EB]/50 transition-all duration-300 md:hover:-translate-y-1 shadow-xl shadow-purple-950/5 flex flex-col justify-between group"
             >
               <div>
                 {/* Rating & Hike Badge */}
@@ -169,18 +169,18 @@ export default function TestimonialsSection({ onOpenModal }) {
               </div>
 
               {/* Author Info */}
-              <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
+              <div className="mt-5 pt-4 border-t border-[#f0dce9] flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#9234eb]/40 to-[#FF40EB]/40 border border-[#FF40EB]/40 flex items-center justify-center font-bold text-xs text-white tracking-wider shrink-0">
                   {t.initials}
                 </div>
                 <div className="min-w-0">
-                  <h4 className="text-sm font-bold text-white group-hover:text-[#FF40EB] transition-colors truncate">
+                  <h4 className="text-sm font-bold text-[#24152b] group-hover:text-[#FF40EB] transition-colors truncate">
                     {t.name}
                   </h4>
                   <div className="text-xs text-emerald-400 font-semibold truncate">
                     {t.newRole}
                   </div>
-                  <div className="text-[10px] text-gray-400 line-through truncate">
+                  <div className="text-[10px] text-[#8b7e90] line-through truncate">
                     {t.prevRole}
                   </div>
                 </div>
@@ -195,7 +195,7 @@ export default function TestimonialsSection({ onOpenModal }) {
             type="button"
             onClick={() => scrollToSlide(activeIndex - 1, false)}
             aria-label="Previous video"
-            className="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-white flex items-center justify-center active:scale-90 transition hover:border-[#FF40EB]"
+            className="w-9 h-9 rounded-full bg-white border border-[#ead8e5] text-[#24152b] flex items-center justify-center active:scale-90 transition hover:border-[#FF40EB]"
           >
             ←
           </button>
@@ -210,7 +210,7 @@ export default function TestimonialsSection({ onOpenModal }) {
                 className={`h-2 rounded-full transition-all duration-300 ${
                   activeIndex === idx
                     ? 'w-7 bg-[#FF40EB] shadow-[0_0_10px_#FF40EB]'
-                    : 'w-2 bg-white/25'
+                    : 'w-2 bg-[#d9c9d6]'
                 }`}
               />
             ))}
@@ -220,7 +220,7 @@ export default function TestimonialsSection({ onOpenModal }) {
             type="button"
             onClick={() => scrollToSlide(activeIndex + 1, false)}
             aria-label="Next video"
-            className="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-white flex items-center justify-center active:scale-90 transition hover:border-[#FF40EB]"
+            className="w-9 h-9 rounded-full bg-white border border-[#ead8e5] text-[#24152b] flex items-center justify-center active:scale-90 transition hover:border-[#FF40EB]"
           >
             →
           </button>

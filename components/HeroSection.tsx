@@ -210,7 +210,7 @@ export default function HeroSection({ onSubmitSuccess }) {
 
             {/* Glowing & Breathing Animated Gradient Border Card */}
             <div className="relative rounded-3xl p-[3px] animated-gradient-border animate-breathing-glow shadow-[0_0_60px_rgba(255,64,235,0.45)]">
-              <div className="bg-[#0b0c13] rounded-[22px] p-6 sm:p-8 backdrop-blur-2xl">
+              <div className="dark-surface bg-[#0b0c13] rounded-[22px] p-6 sm:p-8 backdrop-blur-2xl">
                 
                 {/* Form Header */}
                 <div className="text-left mb-6">

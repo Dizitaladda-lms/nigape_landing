@@ -8,8 +8,8 @@
   --primary-pink: #FF40EB;
   --primary-purple: #9234eb;
   --accent-cyan: #22d3ee;
-  --bg-dark: #000000;
-  --bg-surface: #0a0b12;
+  --bg-dark: #fffafd;
+  --bg-surface: #ffffff;
 }
 
 * {
@@ -18,10 +18,57 @@
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #fffafd;
+  color: #24152b;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   overflow-x: hidden;
+}
+
+/* Light, editorial canvas while retaining Nigape's purple-pink identity. */
+.light-theme section:not(.dark-surface) {
+  background-color: #fffafd !important;
+  border-color: #f0dce9 !important;
+}
+
+.light-theme section:nth-of-type(even) {
+  background-color: #fff6fb !important;
+}
+
+/* Existing content cards inherit the new canvas without requiring a redesign of every section. */
+.light-theme section [class*="bg-[#0"],
+.light-theme section [class*="bg-[#1"] {
+  background-color: #ffffff !important;
+  background-image: none;
+  border-color: #ead8e5;
+}
+
+.light-theme section :is(h1, h2, h3, h4, h5, h6, .text-white) {
+  color: #24152b;
+}
+
+.light-theme section :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
+  color: #756879;
+}
+
+.light-theme .dark-surface,
+.light-theme .dark-surface :is(h1, h2, h3, h4, h5, h6, .text-white) {
+  color: #ffffff;
+}
+
+.light-theme .dark-surface :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
+  color: #9ca3af;
+}
+
+.light-theme .dark-surface,
+.light-theme .dark-surface [class*="bg-[#0"],
+.light-theme .dark-surface [class*="bg-[#1"] {
+  background-color: #0b0c13 !important;
+  background-image: none;
+}
+
+.light-theme section [class*="bg-gradient"][class*="text-white"],
+.light-theme section [class*="bg-[#FF"][class*="text-white"] {
+  color: #ffffff;
 }
 
 /* Custom Neon Glows matching Nigape branding */
