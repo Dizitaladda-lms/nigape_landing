@@ -40,7 +40,7 @@ export default function SuccessModal({ leadData, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-lg animate-fadeIn">
       <div className="relative w-full max-w-lg rounded-3xl p-1 bg-gradient-to-b from-emerald-500 via-[#FF40EB] to-[#9234eb] shadow-[0_0_60px_rgba(16,185,129,0.4)]">
-        <div className="bg-[#0b0d16] rounded-[22px] p-6 sm:p-8 text-center relative max-h-[90vh] overflow-y-auto">
+        <div className="modal-light-surface bg-white rounded-[22px] p-6 sm:p-8 text-center relative max-h-[90vh] overflow-y-auto">
           
           {/* Close button */}
           <button

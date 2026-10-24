@@ -71,7 +71,7 @@ export default function ProjectsSection({ onOpenModal }) {
                   {proj.title}
                 </h3>
 
-                <p className="text-sm text-gray-300 mt-3 leading-relaxed">
+                <p className="text-base text-gray-300 mt-3 leading-relaxed">
                   {proj.desc}
                 </p>
 
@@ -90,7 +90,7 @@ export default function ProjectsSection({ onOpenModal }) {
 
               {/* Impact Callout */}
               <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                <div className="text-xs font-semibold text-emerald-400">
+                <div className="text-sm font-semibold text-emerald-600">
                   <span>• {proj.impact}</span>
                 </div>
                 <button

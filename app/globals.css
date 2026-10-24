@@ -52,25 +52,60 @@ body {
 }
 
 .light-theme section :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
-  color: #756879;
+  color: #4d3f50;
 }
 
-/* Intentional dark panels need their own contrast rules. Without this, the
-   global light-theme typography makes their text nearly invisible. */
+/* All content cards stay light so the website has one consistent visual tone. */
 .light-theme .dark-surface,
 .light-theme section .dark-surface {
-  background-color: #0b0c13 !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  border-color: rgba(255, 64, 235, 0.35) !important;
-  color: #ffffff;
+  border-color: #ead8e5 !important;
+  color: #24152b;
 }
 
 .light-theme .dark-surface :is(h1, h2, h3, h4, h5, h6, .text-white) {
-  color: #ffffff;
+  color: #24152b;
 }
 
 .light-theme .dark-surface :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
-  color: #c9c0cf;
+  color: #4d3f50;
+}
+
+.light-theme .dark-surface :is(input, select) {
+  background-color: #fffafd;
+  border-color: #d9c7d4;
+  color: #24152b;
+}
+
+.light-theme .dark-surface :is(input, select)::placeholder {
+  color: #756879;
+}
+
+.light-theme .dark-surface option {
+  background-color: #ffffff;
+  color: #24152b;
+}
+
+/* Lead and confirmation cards are outside sections, so they need the same
+   light-card treatment explicitly. */
+.light-theme .modal-light-surface {
+  background-color: #ffffff !important;
+  color: #24152b;
+}
+
+.light-theme .modal-light-surface :is(h1, h2, h3, h4, h5, h6, .text-white) {
+  color: #24152b;
+}
+
+.light-theme .modal-light-surface :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
+  color: #4d3f50;
+}
+
+.light-theme .modal-light-surface :is(input, select) {
+  background-color: #fffafd;
+  border-color: #d9c7d4;
+  color: #24152b;
 }
 
 .light-theme footer,
@@ -103,6 +138,14 @@ body {
 .light-theme [class*="bg-gradient"][class*="via-[#FF40EB]"] {
   background-color: #FF40EB !important;
   background-image: none !important;
+}
+
+/* Legacy dark-gradient cards are also rendered as white cards. */
+.light-theme section [class*="bg-gradient"][class*="from-[#0"],
+.light-theme section [class*="bg-gradient"][class*="from-[#1"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #ead8e5 !important;
 }
 
 /* Custom Neon Glows matching Nigape branding */

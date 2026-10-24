@@ -66,7 +66,7 @@ export default function FaqSection({ onOpenModal }) {
                 key={idx}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? 'bg-gradient-to-b from-[#111322] to-[#0a0c16] border-[#FF40EB]/50 shadow-[0_0_20px_rgba(255,64,235,0.1)]'
+                    ? 'bg-white border-[#FF40EB]/50 shadow-[0_0_20px_rgba(255,64,235,0.1)]'
                     : 'bg-white/[0.02] border-white/10 hover:border-white/20'
                 }`}
               >
@@ -85,7 +85,7 @@ export default function FaqSection({ onOpenModal }) {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-sm text-gray-300 leading-relaxed border-t border-white/5">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-base text-gray-300 leading-relaxed border-t border-[#ead8e5]">
                     {item.a}
                   </div>
                 )}

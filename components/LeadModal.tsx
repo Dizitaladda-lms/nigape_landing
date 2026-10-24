@@ -111,7 +111,7 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
       <div 
         className="relative w-full max-w-lg rounded-3xl p-1 bg-gradient-to-b from-[#FF40EB] via-[#9234eb] to-black shadow-[0_0_60px_rgba(255,64,235,0.4)]"
       >
-        <div className="bg-[#0c0d15] rounded-[22px] p-6 sm:p-8 relative">
+        <div className="modal-light-surface bg-white rounded-[22px] p-6 sm:p-8 relative">
           
           {/* Close button */}
           <button

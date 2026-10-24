@@ -81,20 +81,20 @@ export default function KeyHighlights({ onOpenModal }) {
                   </span>
                 </div>
 
-                <div className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-[#FF40EB] transition-colors">
+                <div className="text-3xl sm:text-4xl font-black text-white tracking-tight group-hover:text-[#FF40EB] transition-colors">
                   {item.stat}
                 </div>
 
-                <h3 className="text-lg font-bold text-white mt-1 mb-2">
+                <h3 className="text-xl font-bold text-white mt-1 mb-2">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-base text-gray-400 leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-semibold text-emerald-400">
+              <div className="mt-6 pt-4 border-t border-[#ead8e5] flex items-center gap-2 text-sm font-semibold text-emerald-500">
                 <span>• Verified Bootcamp Feature</span>
               </div>
             </div>

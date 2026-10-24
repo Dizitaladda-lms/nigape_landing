@@ -43,7 +43,7 @@ export default function HiringPartners({ onOpenModal }) {
           <div className="p-6 rounded-2xl bg-gradient-to-b from-[#111322] to-[#0a0b14] border border-white/10 text-left">
             <div className="text-[#FF40EB] font-mono text-2xl font-black mb-2">01.</div>
             <h4 className="text-base font-bold text-white">ATS-Proof Resume Optimization</h4>
-            <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
+            <p className="text-sm text-gray-400 mt-1.5 leading-relaxed">
               We rework your resume with AI keywords, production metrics, and GitHub project links to clear automated hiring filters.
             </p>
           </div>
@@ -51,7 +51,7 @@ export default function HiringPartners({ onOpenModal }) {
           <div className="p-6 rounded-2xl bg-gradient-to-b from-[#111322] to-[#0a0b14] border border-white/10 text-left">
             <div className="text-[#FF40EB] font-mono text-2xl font-black mb-2">02.</div>
             <h4 className="text-base font-bold text-white">Live Technical Mock Interviews</h4>
-            <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
+            <p className="text-sm text-gray-400 mt-1.5 leading-relaxed">
               Experience realistic 1:1 technical interview rounds focusing on LLM architecture, agent design, and live prompt defense.
             </p>
           </div>
@@ -59,7 +59,7 @@ export default function HiringPartners({ onOpenModal }) {
           <div className="p-6 rounded-2xl bg-gradient-to-b from-[#111322] to-[#0a0b14] border border-white/10 text-left">
             <div className="text-[#FF40EB] font-mono text-2xl font-black mb-2">03.</div>
             <h4 className="text-base font-bold text-white">Exclusive Placement Drives</h4>
-            <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
+            <p className="text-sm text-gray-400 mt-1.5 leading-relaxed">
               Direct access to curated hiring drives, referrals, and walk-in interview sessions organized by the NIGAPE placement wing.
             </p>
           </div>
