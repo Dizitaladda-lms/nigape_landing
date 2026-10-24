@@ -234,7 +234,7 @@ export default function CurriculumSection({ onOpenModal }) {
                   {modules[activeModule].skills.slice(0, 4).map((skill, i) => (
                     <span
                       key={i}
-                      className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/15 text-white"
+                      className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#fff6fb] border border-[#ead8e5] text-[#24152b]"
                     >
                       {skill}
                     </span>
@@ -250,13 +250,13 @@ export default function CurriculumSection({ onOpenModal }) {
                 <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                   <button
                     onClick={onOpenModal}
-                    className="w-full sm:w-auto px-5 py-2.5 rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/10 hover:bg-[#FF40EB]/20 text-[#FF40EB] hover:text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center cursor-pointer"
+                    className="w-full sm:w-auto px-5 py-2.5 rounded-full border border-[#FF40EB] bg-[#FF40EB] hover:bg-[#e02cd0] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center cursor-pointer"
                   >
                     <span>Download Brochure PDF</span>
                   </button>
                   <button
                     onClick={onOpenModal}
-                    className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white text-black hover:bg-[#FF40EB] hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer"
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-full border border-[#d9c7d4] bg-[#fffafd] text-[#24152b] hover:border-[#FF40EB] hover:text-[#FF40EB] font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer"
                   >
                     Enroll In This Cohort
                   </button>

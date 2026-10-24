@@ -3,6 +3,13 @@
 import { useState, useEffect } from 'react';
 
 export default function HeroSection({ onSubmitSuccess }) {
+  const hiringCompanies = [
+    { name: 'Google', logo: 'https://cdn.simpleicons.org/google/4285F4' },
+    { name: 'Microsoft', logo: 'https://cdn.simpleicons.org/microsoft/5E5E5E' },
+    { name: 'Amazon', logo: 'https://cdn.simpleicons.org/amazon/FF9900' },
+    { name: 'Meta', logo: 'https://cdn.simpleicons.org/meta/0668E1' },
+  ];
+
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -169,6 +176,28 @@ export default function HeroSection({ onSubmitSuccess }) {
               </div>
             </div>
 
+            {/* Hiring-company logo strip fills the hero space with useful proof. */}
+            <div className="rounded-2xl border border-[#ead8e5] bg-white p-4 shadow-sm">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#756879]">
+                Mentors &amp; alumni from leading teams
+              </p>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {hiringCompanies.map((company) => (
+                  <div
+                    key={company.name}
+                    className="flex min-h-14 items-center justify-center gap-2 rounded-xl border border-[#f0dce9] bg-[#fffafd] px-3 transition hover:border-[#FF40EB]/50"
+                  >
+                    <img
+                      src={company.logo}
+                      alt={`${company.name} logo`}
+                      className="h-5 w-5 object-contain"
+                    />
+                    <span className="text-sm font-bold text-[#24152b]">{company.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Trust Social Proof Row */}
             <div className="hidden">
               <div className="flex items-center gap-2">
@@ -197,7 +226,7 @@ export default function HeroSection({ onSubmitSuccess }) {
           <div id="lead-form" className="lg:col-span-5 scroll-mt-24">
             {/* Attention Floating Live Beacon Badge (Bounces gently on mobile & desktop) */}
             <div className="relative -mb-3 z-10 flex justify-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a0b12] border border-[#FF40EB] shadow-[0_0_25px_rgba(255,64,235,0.7)] animate-float-badge">
+              <div className="hero-form-surface inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a0b12] border border-[#FF40EB] shadow-[0_0_25px_rgba(255,64,235,0.7)] animate-float-badge">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF40EB] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF40EB]"></span>
@@ -210,7 +239,7 @@ export default function HeroSection({ onSubmitSuccess }) {
 
             {/* Glowing & Breathing Animated Gradient Border Card */}
             <div className="relative rounded-3xl p-[3px] animated-gradient-border animate-breathing-glow shadow-[0_0_60px_rgba(255,64,235,0.45)]">
-              <div className="dark-surface bg-[#0b0c13] rounded-[22px] p-5 sm:p-6 backdrop-blur-2xl">
+              <div className="hero-form-surface bg-[#0b0c13] rounded-[22px] p-5 sm:p-6 backdrop-blur-2xl">
                 
                 {/* Form Header */}
                 <div className="mb-4 text-left">
