@@ -24,15 +24,16 @@ export default function Navbar({ onOpenModal }) {
 
   return (
     <header className="sticky top-[38px] z-40 w-full px-3 sm:px-6 py-3 transition-all">
-      <nav className="max-w-7xl mx-auto bg-white/90 backdrop-blur-xl border border-[#ead8e5] rounded-full px-4 sm:px-6 py-2 flex items-center justify-between shadow-xl shadow-purple-950/10">
+      <nav className="relative z-10 min-h-14 max-w-7xl mx-auto bg-white/95 backdrop-blur-xl border border-[#ead8e5] rounded-full px-4 sm:px-6 py-2 flex items-center justify-between shadow-xl shadow-purple-950/10">
         
         {/* Brand Logo */}
-        <a href="#hero" className="flex items-center group py-0.5">
+        <a href="#hero" className="flex items-center gap-2.5 group py-0.5" aria-label="NIGAPE home">
           <img
             src="/nigape-logo.png"
             alt="NIGAPE - National Institute of Gen AI & Prompt Engineering"
-            className="h-9 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 brightness-0"
+            className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-105 brightness-0"
           />
+          <span className="text-base sm:text-lg font-black tracking-tight text-[#24152b]">NIGAPE</span>
         </a>
 
         {/* Desktop Anchor Links */}
@@ -62,7 +63,7 @@ export default function Navbar({ onOpenModal }) {
           {/* Primary Lead Trigger CTA */}
           <button
             onClick={onOpenModal}
-            className="relative group overflow-hidden rounded-full bg-[#FF40EB] hover:bg-[#e02cd0] px-3.5 sm:px-6 py-1.5 sm:py-2 text-[11px] sm:text-sm font-bold text-white shadow-[0_0_25px_rgba(255,64,235,0.45)] hover:shadow-[0_0_35px_rgba(255,64,235,0.7)] hover:scale-105 transition-all duration-300 flex items-center gap-1 shrink-0"
+            className="relative z-10 group overflow-hidden rounded-full bg-[#FF40EB] hover:bg-[#e02cd0] px-3.5 sm:px-6 py-1.5 sm:py-2 text-[11px] sm:text-sm font-bold text-white shadow-[0_0_25px_rgba(255,64,235,0.45)] hover:shadow-[0_0_35px_rgba(255,64,235,0.7)] hover:scale-105 transition-all duration-300 flex items-center gap-1 shrink-0"
           >
             <span className="hidden sm:inline">Book Free Counseling</span>
             <span className="sm:hidden">Apply Now</span>
@@ -72,7 +73,7 @@ export default function Navbar({ onOpenModal }) {
           {/* Mobile Menu Toggle (CSS Bars) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[#68586c] hover:text-[#24152b] focus:outline-none flex flex-col justify-center items-center gap-1 w-8 h-8"
+            className="lg:hidden rounded-lg border border-[#ead8e5] bg-[#fffafd] p-2 text-[#24152b] hover:text-[#FF40EB] focus:outline-none flex flex-col justify-center items-center gap-1 w-9 h-9"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? (
