@@ -55,20 +55,22 @@ body {
   color: #756879;
 }
 
+/* Intentional dark panels need their own contrast rules. Without this, the
+   global light-theme typography makes their text nearly invisible. */
 .light-theme .dark-surface,
-.light-theme .dark-surface [class*="bg-[#0"],
-.light-theme .dark-surface [class*="bg-[#1"] {
-  background-color: #ffffff !important;
-  background-image: none;
-  border-color: #ead8e5 !important;
+.light-theme section .dark-surface {
+  background-color: #0b0c13 !important;
+  background-image: none !important;
+  border-color: rgba(255, 64, 235, 0.35) !important;
+  color: #ffffff;
 }
 
 .light-theme .dark-surface :is(h1, h2, h3, h4, h5, h6, .text-white) {
-  color: #24152b;
+  color: #ffffff;
 }
 
 .light-theme .dark-surface :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
-  color: #756879;
+  color: #c9c0cf;
 }
 
 .light-theme footer,
@@ -93,6 +95,14 @@ body {
 .light-theme section [class*="bg-gradient"][class*="text-white"],
 .light-theme section [class*="bg-[#FF"][class*="text-white"] {
   color: #ffffff;
+}
+
+/* Keep the accent clear and consistent: solid pink instead of pink gradients. */
+.light-theme [class*="bg-gradient"][class*="from-[#FF40EB]"],
+.light-theme [class*="bg-gradient"][class*="from-[#9234eb]"],
+.light-theme [class*="bg-gradient"][class*="via-[#FF40EB]"] {
+  background-color: #FF40EB !important;
+  background-image: none !important;
 }
 
 /* Custom Neon Glows matching Nigape branding */
@@ -134,23 +144,8 @@ body {
   animation: breathingGlow 3s ease-in-out infinite;
 }
 
-/* Continuous shifting gradient border for the lead card */
-@keyframes gradientBorder {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .animated-gradient-border {
-  background: linear-gradient(60deg, #FF40EB, #9234eb, #22d3ee, #FF40EB, #9234eb);
-  background-size: 300% 300%;
-  animation: gradientBorder 4s ease infinite;
+  background: #FF40EB;
 }
 
 /* Button Shimmer / Light Beam passing through */
@@ -214,9 +209,9 @@ body {
 
 /* Gradient text utility */
 .gradient-text-pink {
-  background: linear-gradient(135deg, #9234eb 0%, #FF40EB 55%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  color: #FF40EB;
+  -webkit-text-fill-color: currentColor;
 }
 
 .gradient-text-purple {

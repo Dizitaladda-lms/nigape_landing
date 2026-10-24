@@ -147,7 +147,7 @@ export default function CurriculumSection({ onOpenModal }) {
                   onClick={() => setActiveModule(idx)}
                   className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all duration-200 flex items-center justify-between ${
                     isSelected
-                      ? 'bg-gradient-to-r from-[#9234eb]/20 to-[#FF40EB]/20 border-[#FF40EB] shadow-[0_0_25px_rgba(255,64,235,0.2)]'
+                      ? 'bg-[#FF40EB]/15 border-[#FF40EB] shadow-[0_0_25px_rgba(255,64,235,0.2)]'
                       : 'bg-white/[0.02] border-white/10 hover:bg-white/[0.05] hover:border-white/20'
                   }`}
                 >
@@ -178,14 +178,14 @@ export default function CurriculumSection({ onOpenModal }) {
             })}
 
             {/* Sticky Download Curriculum CTA Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#121422] to-[#0a0c16] border border-[#FF40EB]/30 mt-6 text-left">
+            <div className="dark-surface p-6 rounded-2xl bg-[#0b0c13] border border-[#FF40EB]/30 mt-6 text-left">
               <h4 className="text-base font-bold text-white">Need the full week-by-week PDF?</h4>
               <p className="text-xs text-gray-400 mt-1 mb-4">
                 Get the complete syllabus including lecture schedule, code repositories, and grading rubrics.
               </p>
               <button
                 onClick={onOpenModal}
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#FF40EB] to-[#9234eb] hover:opacity-95 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,64,235,0.4)]"
+                className="w-full py-3 px-4 rounded-xl bg-[#FF40EB] hover:bg-[#e02cd0] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,64,235,0.4)]"
               >
                 Download Detailed Syllabus (PDF) →
               </button>
@@ -194,7 +194,7 @@ export default function CurriculumSection({ onOpenModal }) {
 
           {/* Module Deep-Dive View (Right Column) */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#0c0d16] border border-[#FF40EB]/30 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            <div className="dark-surface p-6 sm:p-8 rounded-3xl bg-[#0c0d16] border border-[#FF40EB]/30 shadow-2xl backdrop-blur-xl relative overflow-hidden">
               <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-[#FF40EB] bg-[#FF40EB]/10 px-3 py-1 rounded-full border border-[#FF40EB]/30">

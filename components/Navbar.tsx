@@ -31,7 +31,7 @@ export default function Navbar({ onOpenModal }) {
           <img
             src="/nigape-logo.png"
             alt="NIGAPE - National Institute of Gen AI & Prompt Engineering"
-            className="h-9 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 drop-shadow-[0_0_12px_rgba(255,64,235,0.3)]"
+            className="h-9 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 brightness-0"
           />
         </a>
 
@@ -62,7 +62,7 @@ export default function Navbar({ onOpenModal }) {
           {/* Primary Lead Trigger CTA */}
           <button
             onClick={onOpenModal}
-            className="relative group overflow-hidden rounded-full bg-gradient-to-r from-[#FF40EB] to-[#9234eb] px-3.5 sm:px-6 py-1.5 sm:py-2 text-[11px] sm:text-sm font-bold text-white shadow-[0_0_25px_rgba(255,64,235,0.45)] hover:shadow-[0_0_35px_rgba(255,64,235,0.7)] hover:scale-105 transition-all duration-300 flex items-center gap-1 shrink-0"
+            className="relative group overflow-hidden rounded-full bg-[#FF40EB] hover:bg-[#e02cd0] px-3.5 sm:px-6 py-1.5 sm:py-2 text-[11px] sm:text-sm font-bold text-white shadow-[0_0_25px_rgba(255,64,235,0.45)] hover:shadow-[0_0_35px_rgba(255,64,235,0.7)] hover:scale-105 transition-all duration-300 flex items-center gap-1 shrink-0"
           >
             <span className="hidden sm:inline">Book Free Counseling</span>
             <span className="sm:hidden">Apply Now</span>
@@ -114,7 +114,7 @@ export default function Navbar({ onOpenModal }) {
                 setMobileMenuOpen(false);
                 onOpenModal();
               }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#FF40EB] to-[#9234eb] text-white font-bold text-sm shadow-[0_0_20px_rgba(255,64,235,0.4)]"
+              className="w-full py-3 rounded-xl bg-[#FF40EB] hover:bg-[#e02cd0] text-white font-bold text-sm shadow-[0_0_20px_rgba(255,64,235,0.4)]"
             >
               Apply For Next Cohort →
             </button>

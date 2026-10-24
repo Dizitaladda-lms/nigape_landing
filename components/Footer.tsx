@@ -16,7 +16,7 @@ export default function Footer({ onOpenModal, onOpenAdmin }) {
               <img
                 src="/nigape-logo.png"
                 alt="NIGAPE - National Institute of Gen AI & Prompt Engineering"
-                className="h-10 sm:h-12 w-auto object-contain brightness-110"
+                className="h-10 sm:h-12 w-auto object-contain brightness-0"
               />
             </div>
             

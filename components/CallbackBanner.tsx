@@ -86,7 +86,7 @@ export default function CallbackBanner({ onSubmitSuccess }) {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-r from-[#9234eb]/25 via-black to-[#FF40EB]/20 border-y border-white/15">
+    <section className="dark-surface py-12 px-4 sm:px-6 lg:px-8 relative bg-[#0b0c13] border-y border-white/15">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         
         {/* Left copy */}
@@ -125,7 +125,7 @@ export default function CallbackBanner({ onSubmitSuccess }) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#FF40EB] to-[#9234eb] text-white font-extrabold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(255,64,235,0.4)] hover:scale-105 active:scale-95 transition flex items-center justify-center shrink-0"
+              className="px-6 py-3 rounded-xl bg-[#FF40EB] hover:bg-[#e02cd0] text-white font-extrabold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(255,64,235,0.4)] hover:scale-105 active:scale-95 transition flex items-center justify-center shrink-0"
             >
               {isSubmitting ? 'Sending...' : 'Request Callback →'}
             </button>

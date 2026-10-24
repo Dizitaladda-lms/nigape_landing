@@ -110,7 +110,7 @@ export default function HeroSection({ onSubmitSuccess }) {
   return (
     <section id="hero" className="relative px-4 pb-10 pt-5 sm:px-6 sm:pt-7 lg:px-8 overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[500px] bg-gradient-to-tr from-[#9234eb]/20 via-[#FF40EB]/15 to-transparent blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[500px] bg-[#FF40EB]/10 blur-[140px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 items-start gap-7 lg:grid-cols-12 lg:gap-10">
@@ -250,6 +250,42 @@ export default function HeroSection({ onSubmitSuccess }) {
                     />
                   </div>
 
+                  {/* Course */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">
+                      Course Interested In <span className="text-[#FF40EB]">*</span>
+                    </label>
+                    <select
+                      required
+                      name="course"
+                      value={formData.course}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white transition focus:border-[#FF40EB] focus:outline-none focus:ring-2 focus:ring-[#FF40EB]/40"
+                    >
+                      <option value="Diploma in Generative AI & Prompt Engineering (12 Months)">Diploma in Generative AI & Prompt Engineering (12 Months)</option>
+                      <option value="Generative AI & Prompt Engineering Bootcamp">Generative AI & Prompt Engineering Bootcamp</option>
+                      <option value="AI Agent Development Program">AI Agent Development Program</option>
+                    </select>
+                  </div>
+
+                  {/* Current profile */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">
+                      Current Profile
+                    </label>
+                    <select
+                      name="experience"
+                      value={formData.experience}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white transition focus:border-[#FF40EB] focus:outline-none focus:ring-2 focus:ring-[#FF40EB]/40"
+                    >
+                      <option value="Recent 12th Passout">Recent 12th Passout</option>
+                      <option value="College Student">College Student</option>
+                      <option value="Working Professional">Working Professional</option>
+                      <option value="Career Switcher">Career Switcher</option>
+                    </select>
+                  </div>
+
                   {/* Phone / WhatsApp */}
                   <div>
                     <label className="block text-xs font-semibold text-gray-300 mb-1">
@@ -279,7 +315,7 @@ export default function HeroSection({ onSubmitSuccess }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full mt-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#FF40EB] via-[#d922c5] to-[#9234eb] text-white font-black text-sm sm:text-base tracking-wide uppercase shadow-[0_0_35px_rgba(255,64,235,0.7)] hover:shadow-[0_0_55px_rgba(255,64,235,1)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 animate-shimmer"
+                    className="w-full mt-2 py-3.5 px-6 rounded-xl bg-[#FF40EB] hover:bg-[#e02cd0] text-white font-black text-sm sm:text-base tracking-wide uppercase shadow-[0_0_35px_rgba(255,64,235,0.7)] hover:shadow-[0_0_55px_rgba(255,64,235,1)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center gap-2">

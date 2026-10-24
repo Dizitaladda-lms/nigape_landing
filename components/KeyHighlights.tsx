@@ -69,11 +69,11 @@ export default function KeyHighlights({ onOpenModal }) {
           {highlights.slice(0, 3).map((item, index) => (
             <div
               key={index}
-              className="group relative p-7 rounded-2xl bg-gradient-to-b from-[#11121c] to-[#07070c] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1.5 shadow-xl hover:shadow-[0_10px_30px_rgba(255,64,235,0.15)] flex flex-col justify-between"
+              className="dark-surface group relative p-7 rounded-2xl bg-[#0b0c13] border border-white/10 hover:border-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-1.5 shadow-xl hover:shadow-[0_10px_30px_rgba(255,64,235,0.15)] flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#9234eb]/30 to-[#FF40EB]/30 border border-[#FF40EB]/30 flex items-center justify-center font-mono font-bold text-sm text-[#FF40EB]">
+                  <div className="w-10 h-10 rounded-xl bg-[#FF40EB]/15 border border-[#FF40EB]/30 flex items-center justify-center font-mono font-bold text-sm text-[#FF40EB]">
                     {item.num}
                   </div>
                   <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">
@@ -102,7 +102,7 @@ export default function KeyHighlights({ onOpenModal }) {
         </div>
 
         {/* Action Prompt Banner inside highlights */}
-        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#9234eb]/20 via-[#FF40EB]/20 to-[#9234eb]/20 border border-[#FF40EB]/30 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="dark-surface mt-12 p-6 sm:p-8 rounded-3xl bg-[#0b0c13] border border-[#FF40EB]/30 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div>
             <h3 className="text-xl sm:text-2xl font-bold text-white">
               Want to see if this Bootcamp matches your career background?
