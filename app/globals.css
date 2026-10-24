@@ -88,31 +88,37 @@ body {
 }
 
 /* The above-the-fold lead form is the single intentional dark conversion panel. */
-.light-theme .hero-form-surface {
+.light-theme .hero-form-surface,
+.light-theme section .hero-form-surface {
   background-color: #0b0c13 !important;
   color: #ffffff;
   border-color: rgba(255, 64, 235, 0.5) !important;
 }
 
-.light-theme .hero-form-surface :is(h1, h2, h3, h4, h5, h6, .text-white) {
+.light-theme .hero-form-surface :is(h1, h2, h3, h4, h5, h6, .text-white),
+.light-theme section .hero-form-surface :is(h1, h2, h3, h4, h5, h6, .text-white) {
   color: #ffffff;
 }
 
-.light-theme .hero-form-surface :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
+.light-theme .hero-form-surface :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500),
+.light-theme section .hero-form-surface :is(p, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500) {
   color: #c9c0cf;
 }
 
-.light-theme .hero-form-surface :is(input, select) {
+.light-theme .hero-form-surface :is(input, select),
+.light-theme section .hero-form-surface :is(input, select) {
   background-color: #141624;
   border-color: rgba(255, 255, 255, 0.18);
   color: #ffffff;
 }
 
-.light-theme .hero-form-surface :is(input, select)::placeholder {
+.light-theme .hero-form-surface :is(input, select)::placeholder,
+.light-theme section .hero-form-surface :is(input, select)::placeholder {
   color: #9a91a0;
 }
 
-.light-theme .hero-form-surface option {
+.light-theme .hero-form-surface option,
+.light-theme section .hero-form-surface option {
   background-color: #141624;
   color: #ffffff;
 }

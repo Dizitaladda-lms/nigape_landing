@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 export default function HeroSection({ onSubmitSuccess }) {
   const hiringCompanies = [
     { name: 'Google', logo: 'https://cdn.simpleicons.org/google/4285F4' },
-    { name: 'Microsoft', logo: 'https://cdn.simpleicons.org/microsoft/5E5E5E' },
-    { name: 'Amazon', logo: 'https://cdn.simpleicons.org/amazon/FF9900' },
+    { name: 'Microsoft', logo: '/company-microsoft.svg' },
+    { name: 'Amazon', logo: '/company-amazon.svg' },
     { name: 'Meta', logo: 'https://cdn.simpleicons.org/meta/0668E1' },
   ];
 
