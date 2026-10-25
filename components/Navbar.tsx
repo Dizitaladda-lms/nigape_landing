@@ -27,13 +27,12 @@ export default function Navbar({ onOpenModal }) {
       <nav className="relative z-10 min-h-14 max-w-7xl mx-auto bg-white/95 backdrop-blur-xl border border-[#ead8e5] rounded-full px-4 sm:px-6 py-2 flex items-center justify-between shadow-xl shadow-purple-950/10">
         
         {/* Brand Logo */}
-        <a href="#hero" className="flex items-center gap-2.5 group py-0.5" aria-label="NIGAPE home">
+        <a href="#hero" className="flex items-center group py-0.5" aria-label="NIGAPE home">
           <img
             src="/nigape-logo.png"
             alt="NIGAPE - National Institute of Gen AI & Prompt Engineering"
-            className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-105 brightness-0"
+            className="h-12 w-12 sm:h-14 sm:w-14 object-contain transition-transform duration-300 group-hover:scale-105 brightness-0"
           />
-          <span className="text-base sm:text-lg font-black tracking-tight text-[#24152b]">NIGAPE</span>
         </a>
 
         {/* Desktop Anchor Links */}

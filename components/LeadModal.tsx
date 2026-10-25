@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { courseOptions } from './courseOptions';
 
 export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoal = 'Download Detailed Syllabus & Book Counseling' }) {
   const [formData, setFormData] = useState({
@@ -184,16 +185,9 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
                 onChange={handleChange}
                 className="w-full px-3 py-2.5 rounded-xl bg-[#141624] border border-white/15 text-white text-xs focus:outline-none focus:border-[#FF40EB] cursor-pointer"
               >
-                <option value="Diploma in Generative AI & Prompt Engineering">Diploma in Generative AI & Prompt Engineering (12 Months)</option>
-                <option value="Advanced Generative AI & Prompt Engineering">Advanced Generative AI & Prompt Engineering (6 Months)</option>
-                <option value="Advanced Certification in Generative AI & Prompt Engineering">Advanced Certification in GenAI & Prompt Engineering</option>
-                <option value="Generative AI for Professionals">Generative AI for Professionals</option>
-                <option value="AI Literacy for Everyone">AI Literacy for Everyone</option>
-                <option value="NLP Professional">NLP Professional</option>
-                <option value="Computer Vision Professional">Computer Vision Professional</option>
-                <option value="Deep Learning Professional">Deep Learning Professional</option>
-                <option value="UG Degree Programs (3 Years)">UG Degree in AI (3 Years - DU SOL / Jain University)</option>
-                <option value="PG Programs (2 Years)">PG in AI (2 Years - DU SOL / Manipal University)</option>
+                {courseOptions.map((course) => (
+                  <option key={course} value={course}>{course}</option>
+                ))}
               </select>
             </div>
 

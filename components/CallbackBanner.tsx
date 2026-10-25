@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { courseOptions } from './courseOptions';
 
 export default function CallbackBanner({ onSubmitSuccess }) {
   const [phone, setPhone] = useState('');
+  const [course, setCourse] = useState(courseOptions[0]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -44,7 +46,7 @@ export default function CallbackBanner({ onSubmitSuccess }) {
       fullName: 'Quick Callback Request',
       phone: cleanPhone,
       deviceId,
-      course: 'Generative AI & Autonomous AI Agents',
+      course,
       email: 'callback@lead.nigape.com',
       experience: 'Quick Callback',
       learningMode: 'Flexible',
@@ -82,6 +84,7 @@ export default function CallbackBanner({ onSubmitSuccess }) {
 
     setIsSubmitting(false);
     setPhone('');
+    setCourse(courseOptions[0]);
     onSubmitSuccess(leadPayload);
   };
 
@@ -104,7 +107,19 @@ export default function CallbackBanner({ onSubmitSuccess }) {
 
         {/* Right input form */}
         <form onSubmit={handleSubmit} className="w-full md:w-auto flex-1 max-w-md">
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col gap-2">
+            <select
+              required
+              value={course}
+              onChange={(e) => setCourse(e.target.value)}
+              aria-label="Course interested in"
+              className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white transition focus:border-[#FF40EB] focus:outline-none"
+            >
+              {courseOptions.map((option) => (
+                <option key={option} value={option} className="text-[#24152b]">{option}</option>
+              ))}
+            </select>
+            <div className="flex flex-col sm:flex-row gap-2">
             <div className="flex flex-1">
               <span className="inline-flex items-center px-3.5 rounded-l-xl border border-r-0 border-white/15 bg-white/10 text-gray-300 text-sm font-semibold">
                 +91
@@ -129,6 +144,7 @@ export default function CallbackBanner({ onSubmitSuccess }) {
             >
               {isSubmitting ? 'Sending...' : 'Request Callback →'}
             </button>
+            </div>
           </div>
           {error && <p className="text-[11px] text-red-400 mt-1 font-medium">{error}</p>}
           <div className="text-[11px] text-gray-400 mt-2">

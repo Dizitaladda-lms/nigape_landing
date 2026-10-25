@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { courseOptions } from './courseOptions';
 
 export default function HeroSection({ onSubmitSuccess }) {
   const hiringCompanies = [
@@ -291,9 +292,9 @@ export default function HeroSection({ onSubmitSuccess }) {
                       onChange={handleChange}
                       className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white transition focus:border-[#FF40EB] focus:outline-none focus:ring-2 focus:ring-[#FF40EB]/40"
                     >
-                      <option value="Diploma in Generative AI & Prompt Engineering (12 Months)">Diploma in Generative AI & Prompt Engineering (12 Months)</option>
-                      <option value="Generative AI & Prompt Engineering Bootcamp">Generative AI & Prompt Engineering Bootcamp</option>
-                      <option value="AI Agent Development Program">AI Agent Development Program</option>
+                      {courseOptions.map((course) => (
+                        <option key={course} value={course}>{course}</option>
+                      ))}
                     </select>
                   </div>
 
