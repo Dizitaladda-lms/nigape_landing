@@ -31,7 +31,7 @@ export default function Navbar({ onOpenModal }) {
           <img
             src="/nigape-logo.png"
             alt="NIGAPE - National Institute of Gen AI & Prompt Engineering"
-            className="h-14 w-14 sm:h-16 sm:w-16 object-contain transition-transform duration-300 group-hover:scale-105 brightness-0"
+            className="h-20 w-20 sm:h-20 sm:w-20 object-contain transition-transform duration-300 group-hover:scale-105 brightness-0"
           />
         </a>
 
