@@ -146,12 +146,9 @@ export async function POST(request: Request) {
 
     console.log('[NIGAPE -> CRM FORWARDING]:', crmPayload);
 
-    let crmResponseData = null;
-    let crmStatus = null;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 25000);
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 25000); // 25s timeout for reliable forwarding
-
       const crmRes = await fetch(DIZITALADDA_CRM_ENDPOINT, {
         method: 'POST',
         headers: {
@@ -162,19 +159,27 @@ export async function POST(request: Request) {
         signal: controller.signal,
       });
 
-      clearTimeout(timeoutId);
-      crmStatus = crmRes.status;
-      crmResponseData = await crmRes.json().catch(() => null);
-      console.log('[CRM RESPONSE]:', crmStatus, crmResponseData);
+      if (!crmRes.ok) {
+        const crmError = await crmRes.text();
+        console.error('[CRM REJECTED LEAD]:', crmRes.status, crmError);
+        return NextResponse.json(
+          { error: 'Lead CRM mein save nahi ho paayi. Kripya dobara try karein.' },
+          { status: 502 }
+        );
+      }
     } catch (crmErr: any) {
       console.error('[CRM FORWARDING ERROR]:', crmErr.message || crmErr);
+      return NextResponse.json(
+        { error: 'Lead CRM tak nahi pahunch paayi. Kripya dobara try karein.' },
+        { status: 502 }
+      );
+    } finally {
+      clearTimeout(timeoutId);
     }
 
     return NextResponse.json({
       success: true,
       message: 'Lead captured successfully',
-      crmStatus,
-      crmResponse: crmResponseData,
       lead: {
         fullName,
         phone: cleanPhone,

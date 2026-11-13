@@ -84,14 +84,21 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
         body: JSON.stringify(leadPayload),
       });
 
+      const responseData = await res.json();
       if (res.status === 429) {
-        const errJson = await res.json();
-        setSubmitError(errJson.error || 'Aap 1 minute mein bas 2 baar submit kar sakte hain. Kripya thoda wait karein.');
-        setIsSubmitting(false);
+        setSubmitError(responseData.error || 'Aap 1 minute mein bas 2 baar submit kar sakte hain. Kripya thoda wait karein.');
+        return;
+      }
+      if (!res.ok || !responseData.success) {
+        setSubmitError(responseData.error || 'Lead CRM mein save nahi ho paayi. Kripya dobara try karein.');
         return;
       }
     } catch (apiErr) {
       console.error('Failed to sync with CRM:', apiErr);
+      setSubmitError('Server se connection nahi ho paaya. Kripya dobara try karein.');
+      return;
+    } finally {
+      setIsSubmitting(false);
     }
 
     try {
@@ -102,7 +109,6 @@ export default function LeadModal({ isOpen, onClose, onSubmitSuccess, defaultGoa
       console.error('Failed to save lead', err);
     }
 
-    setIsSubmitting(false);
     onClose();
     onSubmitSuccess(leadPayload);
   };
