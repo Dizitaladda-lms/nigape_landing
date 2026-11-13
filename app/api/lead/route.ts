@@ -6,6 +6,7 @@ const DIZITALADDA_CRM_ENDPOINT =
   process.env.DIZITALADDA_CRM_ENDPOINT ||
   process.env.CRM_ENDPOINT ||
   'https://leads.dizitaladda.com/api/public/leads';
+const NIGAPE_SITE_URL = process.env.NIGAPE_SITE_URL || 'https://ads.nigape.com';
 const CRM_DOMAIN = process.env.CRM_DOMAIN || 'Nigape';
 const CRM_COURSE = process.env.CRM_COURSE || 'Generative AI & Autonomous AI Agents';
 
@@ -146,6 +147,7 @@ export async function POST(request: Request) {
 
     console.log('[NIGAPE -> CRM FORWARDING]:', crmPayload);
 
+    const siteUrl = new URL(NIGAPE_SITE_URL);
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 25000);
     try {
@@ -154,6 +156,8 @@ export async function POST(request: Request) {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          'Origin': siteUrl.origin,
+          'Referer': `${siteUrl.origin}/`,
         },
         body: JSON.stringify(crmPayload),
         signal: controller.signal,
